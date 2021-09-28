@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/rocket-32x32.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/rocket-16x16.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Set 和 MapSet 和 Map 主要的应用场景在于 数据重组 和 数据储存Set 是一种叫做集合的数据结构，Map 是一种叫做字典的数据结构 Set(集合)Set本身是一个构造函数，需要实例化一个实例,且Set结构式无重复的数据，可以用于数据去重。Set是一个只有键值，没有键名的结构 123const s &#x3D; new Set();[1, 2, 2, 3, 4, 4].forEach(item">
+<meta property="og:type" content="article">
+<meta property="og:title" content="介绍下 Set、Map、WeakSet 和 WeakMap 的区别？">
+<meta property="og:url" content="http://duowu.site/posts/Set-Map.html">
+<meta property="og:site_name" content="朵雾🌸Flower fog">
+<meta property="og:description" content="Set 和 MapSet 和 Map 主要的应用场景在于 数据重组 和 数据储存Set 是一种叫做集合的数据结构，Map 是一种叫做字典的数据结构 Set(集合)Set本身是一个构造函数，需要实例化一个实例,且Set结构式无重复的数据，可以用于数据去重。Set是一个只有键值，没有键名的结构 123const s &#x3D; new Set();[1, 2, 2, 3, 4, 4].forEach(item">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-16T14:50:34.000Z">
+<meta property="article:modified_time" content="2021-09-28T09:34:09.722Z">
+<meta property="article:author" content="朵雾">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="es6">
+<meta property="article:tag" content="数组去重">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+  <link rel="canonical" href="http://duowu.site/posts/Set-Map.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>介绍下 Set、Map、WeakSet 和 WeakMap 的区别？ | 朵雾🌸Flower fog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">朵雾🌸Flower fog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">Learn to be strict with yourself and lenient to others</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://duowu.site/posts/Set-Map.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朵雾">
+      <meta itemprop="description" content="奔跑吧，少年">
+      <meta itemprop="image" content="/images/Avator.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朵雾🌸Flower fog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">介绍下 Set、Map、WeakSet 和 WeakMap 的区别？
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-16 22:50:34" itemprop="dateCreated datePublished" datetime="2020-06-16T22:50:34+08:00">2020-06-16</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/Set-Map.html" class="leancloud_visitors" data-flag-title="介绍下 Set、Map、WeakSet 和 WeakMap 的区别？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">23k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h2><p>Set 和 Map 主要的应用场景在于 数据重组 和 数据储存<br>Set 是一种叫做<strong>集合的数据结构</strong>，Map 是一种叫做<strong>字典的数据结构</strong></p>
+<h3 id="Set-集合"><a href="#Set-集合" class="headerlink" title="Set(集合)"></a>Set(集合)</h3><p>Set本身是一个构造函数，需要实例化一个实例,且Set结构式无重复的数据，可以用于数据去重。Set是一个只有键值，没有键名的结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>].forEach(<span class="function"><span class="params">item</span> =&gt;</span> s.add(item));</span><br><span class="line"><span class="built_in">console</span>.log(s)  <span class="comment">//Set &#123; 1, 2, 3, 4 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>数组去重方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(arr)])  <span class="comment">// [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>字符串去重：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'abbbcccd'</span>;</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(str)].join(<span class="string">''</span>));  <span class="comment">// 'abcd'</span></span><br></pre></td></tr></table></figure>
+
+<p>Set中加入值时，数字3和字符串3会被认为两个数据，不会发生类型转化，内部判断是否相等的算法是 === 全等类型，但是加入两次NaN时，会被认为两次NaN相等</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">const</span> set2 = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">NaN</span>;</span><br><span class="line">set1.add(a);</span><br><span class="line">set1.add(b);</span><br><span class="line"><span class="built_in">console</span>.log(set1);    <span class="comment">//Set &#123; NaN &#125;</span></span><br><span class="line"></span><br><span class="line">set2.add(<span class="string">'3'</span>);</span><br><span class="line">set2.add(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set2)   <span class="comment">//Set &#123; '3', 3 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Set的属性和方法"><a href="#Set的属性和方法" class="headerlink" title="Set的属性和方法"></a>Set的属性和方法</h3><ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>Set.prototype.constructor  构造函数，默认就是Set函数。</li>
+<li>Set.prototype.size  返回Set实例的成员总数。</li>
+</ol>
+<ul>
+<li>方法，分为操作方法和遍历方法<ul>
+<li>操作方法</li>
+</ul>
+<ol>
+<li>Set.prototype.add(value)：添加某个值，返回 Set 结构本身。</li>
+<li>Set.prototype.delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li>Set.prototype.has(value)：返回一个布尔值，表示该值是否为Set的成员。</li>
+<li>Set.prototype.clear()：清除所有成员，没有返回值。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">set</span> = new Set();</span><br><span class="line"><span class="keyword">set</span>.add(2).add(3).add(3);</span><br><span class="line">console.log(<span class="keyword">set</span>.has(2));  //true</span><br><span class="line">console.log(<span class="keyword">set</span>);   //&#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">set</span>.delete(2);</span><br><span class="line">console.log(<span class="keyword">set</span>.has(2));  //false</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Array.form()方法可以将Set结构转化为数组, 这又提供了一种新的去重方法</li>
+</ul>
+<ul>
+<li>从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。</li>
+<li>支持三个参数，第一个arrayLike，类似数组的对象，第二个callback回调函数(可选)，指定必须每个参数都需要执行的回调函数，第三个thisArg(可选)， 表示执行的回调时的this指向。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组去重</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr)));  <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历方法</li>
+</ul>
+<ol>
+<li>Set.prototype.keys()：返回键名的遍历器</li>
+<li>Set.prototype.values()：返回键值的遍历器</li>
+<li>Set.prototype.entries()：返回键值对的遍历器</li>
+<li>Set.prototype.forEach()：使用回调函数遍历每个成员<br>❗ 注意： Set的遍历顺序就是插入顺序，是按顺序调用的</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>keys()，values()，entries()<br>Set.keys() 返回Set结构的键名，因为Set是没有键名的，所以会返回键值<br>Set.values() 返回Set结构的键值<br>Set.entries 返回Set结构的键名和键值。因为Set是没有键名，所以会返回两遍键值<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>])</span><br><span class="line"><span class="built_in">console</span>.log(set1.keys()); <span class="comment">//&#123; '1', '2', '3' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(set1.values()); <span class="comment">//&#123; '1', '2', '3' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(set1.entries());  <span class="comment">//&#123; [ '1', '1' ], [ '2', '2' ], [ '3', '3' ] &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>forEach<br>Set结构也有forEach方法，用于遍历，因为Set 结构的键名就是键值（两者是同一个值），因此第一个参数与第二个参数的值永远都是一样的。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>]);</span><br><span class="line">set1.forEach(<span class="function">(<span class="params">key, value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">':'</span> + value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Set实现交集，并集，差集"><a href="#Set实现交集，并集，差集" class="headerlink" title="Set实现交集，并集，差集"></a>Set实现交集，并集，差集</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="keyword">let</span> set3 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([...set2, ...set3]);  <span class="comment">//并集</span></span><br><span class="line"><span class="built_in">console</span>.log([...set2].filter(<span class="function"><span class="params">item</span> =&gt;</span> set3.has(item)));  <span class="comment">//交集</span></span><br><span class="line"><span class="built_in">console</span>.log([...set2].filter(<span class="function"><span class="params">item</span> =&gt;</span> !set3.has(item)));  <span class="comment">//差集(这里是a相对b的差集)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>与Set结构类似，也是不重复的值集合</p>
+<ul>
+<li>WeakSet 和 Set的区别</li>
+</ul>
+<ol>
+<li>WeakSet 只能储存对象引用，不能存放值，而 Set 对象都可以</li>
+<li>WeakSet 对象中储存的对象值都是被弱引用的，即垃圾回收机制不考虑 WeakSet 对该对象的应用，如果没有其他的变量或属性引用这个对象值，则这个对象将会被垃圾回收掉（不考虑该对象还存在于 WeakSet 中），所以，WeakSet 对象里有多少个成员元素，取决于垃圾回收机制有没有运行，运行前后成员个数可能不一致，遍历结束之后，有的成员可能取不到了（被垃圾回收了），WeakSet 对象是无法被遍历的（ES6 规定 WeakSet 不可遍历），也没有办法拿到它包含的所有元素</li>
+</ol>
+<h2 id="Map-字典"><a href="#Map-字典" class="headerlink" title="Map(字典)"></a>Map(字典)</h2><p>JavaScript的对象本质上是键值对的集合(Hash 结构)，但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。<br>Es6的Map提供了这一解决办法，Map键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
+<ul>
+<li>Map 和 Set的区别</li>
+</ul>
+<ol>
+<li>共同点：集合、字典 可以储存不重复的值</li>
+<li>不同点：集合 是以 [value, value]的形式储存元素，字典 是以 [key, value] 的形式储存。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> o = &#123;<span class="attr">p</span>: <span class="string">'haha'</span>&#125;</span><br><span class="line">m.set(o, <span class="string">'content'</span>)</span><br><span class="line">m.get(o)	<span class="comment">// content</span></span><br><span class="line"></span><br><span class="line">m.has(o)	<span class="comment">// true</span></span><br><span class="line">m.delete(o)	<span class="comment">// true</span></span><br><span class="line">m.has(o)	<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>  map1 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map1.set(<span class="string">'a'</span>, <span class="number">1</span>);</span><br><span class="line">map1.set(<span class="string">'a'</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(map1) <span class="comment">//'a' =&gt; 2</span></span><br></pre></td></tr></table></figure>
+❗ 注意，只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line">map.set([<span class="string">'a'</span>], <span class="number">555</span>);</span><br><span class="line">map.get([<span class="string">'a'</span>]) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="Map的属性和方法"><a href="#Map的属性和方法" class="headerlink" title="Map的属性和方法"></a>Map的属性和方法</h3><ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>constructor：构造函数</li>
+<li>size：返回字典中所包含的元素个数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">  [<span class="string">'name'</span>, <span class="string">'An'</span>],</span><br><span class="line">  [<span class="string">'des'</span>, <span class="string">'JS'</span>]</span><br><span class="line">]);</span><br><span class="line">map.size <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>方法<ul>
+<li>操作方法</li>
+</ul>
+<ol>
+<li>set(key, value)：向字典中添加新元素</li>
+<li>get(key)：通过键查找特定的数值并返回</li>
+<li>has(key)：判断字典中是否存在键key</li>
+<li>delete(key)：通过键 key 从字典中移除对应的数据</li>
+<li>clear()：将这个字典中的所有元素删除<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">m.set(<span class="string">'a'</span>, <span class="number">2</span>);</span><br><span class="line">m.get(<span class="string">'a'</span>); <span class="comment">//2</span></span><br><span class="line">m.has(<span class="string">'a'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">m.delete(<span class="string">'a'</span>);</span><br><span class="line">m.has(<span class="string">'a'</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>遍历方法    遍历的顺序就是插入数据的顺序</li>
+</ul>
+<ol>
+<li>Map.prototype.keys()：返回键名的遍历器。</li>
+<li>Map.prototype.values()：返回键值的遍历器。</li>
+<li>Map.prototype.entries()：返回所有成员的遍历器。</li>
+<li>Map.prototype.forEach()：遍历 Map 的所有成员。</li>
+</ol>
+</li>
+</ul>
+<h3 id="Map与数据结构的相互转化"><a href="#Map与数据结构的相互转化" class="headerlink" title="Map与数据结构的相互转化"></a>Map与数据结构的相互转化</h3><ol>
+<li>Map转化为数组<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map.set(<span class="string">'a'</span>, <span class="number">1</span>).set(<span class="string">'b'</span>, <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log([...map]);  <span class="comment">//通过扩展运算符</span></span><br></pre></td></tr></table></figure></li>
+<li>数组转化为Map<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map1 = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'a'</span>, <span class="number">1</span>], [<span class="string">'abc'</span>]]);</span><br><span class="line"><span class="built_in">console</span>.log(map1)</span><br></pre></td></tr></table></figure></li>
+<li>Map转化为对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map2 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map2.set(<span class="string">'c'</span>, <span class="number">1</span>).set(<span class="string">'b'</span>, <span class="number">2</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MaptoObj</span>(<span class="params">map</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> Obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    Obj[key] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>对象转化为Map<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;</span><br><span class="line">  <span class="string">'x'</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">'y'</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjtoMap</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> map3 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">    map3.set(key, obj[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> map3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Map转化为JSON<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapToJson</span>(<span class="params">map</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify([...map]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> map4 = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">'name'</span>, <span class="string">'An'</span>).set(<span class="string">'des'</span>, <span class="string">'JS'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(mapToJson(map4));</span><br></pre></td></tr></table></figure></li>
+<li>JSON转化为Map<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonToStrMap</span>(<span class="params">jsonStr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ObjtoMap(<span class="built_in">JSON</span>.parse(jsonStr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonToStrMap(<span class="string">'&#123;"name": "An", "des": "JS"&#125;'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2>WeakMap 对象是一组键值对的集合，其中的键是弱引用对象，而值可以是任意。<br>❗ 注意：WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用。</li>
+</ol>
+<p>WeakMap 中，每个键对自己所引用对象的引用都是弱引用，在没有其他引用和该键引用同一对象，这个对象将会被垃圾回收（相应的key则变成无效的），所以，WeakMap 的 key 是不可枚举的。</p>
+<ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>constructor：构造函数</li>
+</ol>
+<ul>
+<li>方法</li>
+</ul>
+<ol>
+<li>has(key)：判断是否有 key 关联对象</li>
+<li>get(key)：返回key关联对象（没有则则返回 undefined）</li>
+<li>set(key)：设置一组key关联对象</li>
+<li>delete(key)：移除 key 的关联对象</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Set</li>
+</ul>
+<ol>
+<li>成员为一，无序且不重复</li>
+<li>只有键值，没有键名，也可以说是键值与键名一致[value, value]</li>
+<li>可以用于数组去重</li>
+<li>可以遍历，方法有：add、delete、has</li>
+<li>很容易实现交集，并集，差集</li>
+</ol>
+<ul>
+<li>WeakSet</li>
+</ul>
+<ol>
+<li>成员都是对象</li>
+<li>成员都是弱引用，可以被垃圾回收机制回收，可以用来保存DOM节点，不容易造成内存泄漏</li>
+<li>不能遍历，方法有add、delete、has</li>
+</ol>
+<ul>
+<li>Map</li>
+</ul>
+<ol>
+<li>本质上是键值对的集合，类似集合,但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</li>
+<li>可以遍历，方法很多可以跟各种数据格式转换</li>
+</ol>
+<ul>
+<li>WeakMap</li>
+</ul>
+<ol>
+<li>只接受对象作为键名（null除外），不接受其他类型的值作为键名</li>
+<li>键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的</li>
+<li>不能遍历，方法有get、set、has、delete</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/diy/wechat.png" alt="朵雾 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/diy/alipay.png" alt="朵雾 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <!-- JS库 clipboard 拷贝内容到粘贴板-->
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+<!-- JS库 sweetalert 显示提示信息-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<ul class="post-copyright">
+  <!-- 本文标题 -->
+  <li>
+    <strong>本文标题： </strong>
+    介绍下 Set、Map、WeakSet 和 WeakMap 的区别？
+  </li>
+
+  <!-- 本文作者 -->
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>
+    朵雾
+  </li>
+
+  <!-- 创建时间 -->
+  <li>
+    <strong>创建时间： </strong>
+    2020年06月16日 - 22时06分
+  </li>
+
+  <!-- 修改时间 -->
+  <li>
+    <strong>修改时间： </strong>
+    2021年09月28日 - 17时09分
+  </li>
+
+  <!-- 引用链接 -->
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://duowu.site/posts/Set-Map.html" title="介绍下 Set、Map、WeakSet 和 WeakMap 的区别？"
+      >http://duowu.site/posts/Set-Map.html</a
+    >
+    <span class="copy-path" title="点击复制引用链接"
+      ><i
+        style="cursor: pointer"
+        class="fa fa-clipboard"
+        data-clipboard-text="[朵雾's Blog | 介绍下 Set、Map、WeakSet 和 WeakMap 的区别？](http://duowu.site/posts/Set-Map.html)"
+        aria-label="复制成功"
+      ></i
+    ></span>
+  </li>
+
+  <!-- 版权声明 -->
+  <li class="post-copyright-license">
+    <strong
+      >版权声明：
+    </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+<script>
+  var clipboard = new ClipboardJS(".fa-clipboard");
+  clipboard.on("success", function(target) {
+    var message = document.createElement("div");
+    message.innerHTML =
+      '<i class="fa fa-check-circle message-icon"></i><span class="message-content">' +
+      target.trigger.getAttribute("aria-label") +
+      "</span>";
+    swal({
+      content: message,
+      className: "copy-success-message",
+      timer: 1000,
+      button: false
+    });
+  });
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/es6/" rel="tag"># es6</a>
+          
+            <a href="/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" rel="tag"># 数组去重</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/ZCY.html" rel="prev" title="政采云一面面经">
+                <i class="fa fa-chevron-left"></i> 政采云一面面经}
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+             
+              <a href="/posts/prototype.html" rel="next" title="对象，原型及原型链">
+                对象，原型及原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="/images/Avator.png"
+                  alt="朵雾" />
+              </a>
+            
+              <p class="site-author-name" itemprop="name">朵雾</p>
+              <p class="site-description motion-element" itemprop="description">奔跑吧，少年</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/1970186643" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1970186643@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/5dbe78766fb9a02075109419/posts" target="_blank" title="掘金" rel="external nofollow"><i class="fa fa-fw fa-掘金"></i>掘金</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blogwuyue.com/" title="五月" target="_blank">五月</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-和-Map"><span class="nav-text">Set 和 Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-集合"><span class="nav-text">Set(集合)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set的属性和方法"><span class="nav-text">Set的属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set实现交集，并集，差集"><span class="nav-text">Set实现交集，并集，差集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSet"><span class="nav-text">WeakSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-字典"><span class="nav-text">Map(字典)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map的属性和方法"><span class="nav-text">Map的属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map与数据结构的相互转化"><span class="nav-text">Map与数据结构的相互转化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakMap"><span class="nav-text">WeakMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script
+  async
+  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+<div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朵雾</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">43k</span>
+  
+
+  
+</div>
+
+
+  
+  <div class="BbeiAn-info">
+<a target="_blank"  href="http://www.beian.miit.gov.cn/s" style="color:#999">赣ICP备20003382号-1</a> | 
+<a target="_blank"  href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36112402000108" style="color:#999">赣公网安备36112402000108号-1</a>
+</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "mQDFWqP6SpFUGrMq71OVcGXG-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "mQDFWqP6SpFUGrMq71OVcGXG-gzGzoHsz",
+                'X-LC-Key': "1u27xV36tJaB607rCiE7EKFY",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+ 
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+<script>
+  function timer() {
+    var ages = moment.preciseDiff(moment(),moment(20200301,"YYYYMMDD"));
+    ages = ages.replace(/years?/, "年");
+    ages = ages.replace(/months?/, "月");
+    ages = ages.replace(/days?/, "天");
+    ages = ages.replace(/hours?/, "小时");
+    ages = ages.replace(/minutes?/, "分");
+    ages = ages.replace(/seconds?/, "秒");
+    ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+    div.innerHTML = `我已在此等候你 ${ages}`;
+  }
+  var div = document.createElement("div");
+  //插入到copyright之后
+  var copyright = document.querySelector(".copyright");
+  document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+  timer();
+  setInterval("timer()",1000)
+</script>
+
+</body>
+</html>
