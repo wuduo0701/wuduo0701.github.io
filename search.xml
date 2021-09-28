@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>介绍下 Set、Map、WeakSet 和 WeakMap 的区别？</title>
+    <url>/posts/Set-Map.html</url>
+    <content><![CDATA[<h2 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h2><p>Set 和 Map 主要的应用场景在于 数据重组 和 数据储存<br>Set 是一种叫做<strong>集合的数据结构</strong>，Map 是一种叫做<strong>字典的数据结构</strong></p>
+<h3 id="Set-集合"><a href="#Set-集合" class="headerlink" title="Set(集合)"></a>Set(集合)</h3><p>Set本身是一个构造函数，需要实例化一个实例,且Set结构式无重复的数据，可以用于数据去重。Set是一个只有键值，没有键名的结构</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>].forEach(<span class="function"><span class="params">item</span> =&gt;</span> s.add(item));</span><br><span class="line"><span class="built_in">console</span>.log(s)  <span class="comment">//Set &#123; 1, 2, 3, 4 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>数组去重方式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(arr)])  <span class="comment">// [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>字符串去重：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'abbbcccd'</span>;</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(str)].join(<span class="string">''</span>));  <span class="comment">// 'abcd'</span></span><br></pre></td></tr></table></figure>
+
+<p>Set中加入值时，数字3和字符串3会被认为两个数据，不会发生类型转化，内部判断是否相等的算法是 === 全等类型，但是加入两次NaN时，会被认为两次NaN相等</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">const</span> set2 = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">NaN</span>;</span><br><span class="line">set1.add(a);</span><br><span class="line">set1.add(b);</span><br><span class="line"><span class="built_in">console</span>.log(set1);    <span class="comment">//Set &#123; NaN &#125;</span></span><br><span class="line"></span><br><span class="line">set2.add(<span class="string">'3'</span>);</span><br><span class="line">set2.add(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set2)   <span class="comment">//Set &#123; '3', 3 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Set的属性和方法"><a href="#Set的属性和方法" class="headerlink" title="Set的属性和方法"></a>Set的属性和方法</h3><ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>Set.prototype.constructor  构造函数，默认就是Set函数。</li>
+<li>Set.prototype.size  返回Set实例的成员总数。</li>
+</ol>
+<ul>
+<li>方法，分为操作方法和遍历方法<ul>
+<li>操作方法</li>
+</ul>
+<ol>
+<li>Set.prototype.add(value)：添加某个值，返回 Set 结构本身。</li>
+<li>Set.prototype.delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li>Set.prototype.has(value)：返回一个布尔值，表示该值是否为Set的成员。</li>
+<li>Set.prototype.clear()：清除所有成员，没有返回值。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">set</span> = new Set();</span><br><span class="line"><span class="keyword">set</span>.add(2).add(3).add(3);</span><br><span class="line">console.log(<span class="keyword">set</span>.has(2));  //true</span><br><span class="line">console.log(<span class="keyword">set</span>);   //&#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">set</span>.delete(2);</span><br><span class="line">console.log(<span class="keyword">set</span>.has(2));  //false</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>Array.form()方法可以将Set结构转化为数组, 这又提供了一种新的去重方法</li>
+</ul>
+<ul>
+<li>从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。</li>
+<li>支持三个参数，第一个arrayLike，类似数组的对象，第二个callback回调函数(可选)，指定必须每个参数都需要执行的回调函数，第三个thisArg(可选)， 表示执行的回调时的this指向。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数组去重</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr)));  <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历方法</li>
+</ul>
+<ol>
+<li>Set.prototype.keys()：返回键名的遍历器</li>
+<li>Set.prototype.values()：返回键值的遍历器</li>
+<li>Set.prototype.entries()：返回键值对的遍历器</li>
+<li>Set.prototype.forEach()：使用回调函数遍历每个成员<br>❗ 注意： Set的遍历顺序就是插入顺序，是按顺序调用的</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>keys()，values()，entries()<br>Set.keys() 返回Set结构的键名，因为Set是没有键名的，所以会返回键值<br>Set.values() 返回Set结构的键值<br>Set.entries 返回Set结构的键名和键值。因为Set是没有键名，所以会返回两遍键值<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>])</span><br><span class="line"><span class="built_in">console</span>.log(set1.keys()); <span class="comment">//&#123; '1', '2', '3' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(set1.values()); <span class="comment">//&#123; '1', '2', '3' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(set1.entries());  <span class="comment">//&#123; [ '1', '1' ], [ '2', '2' ], [ '3', '3' ] &#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>forEach<br>Set结构也有forEach方法，用于遍历，因为Set 结构的键名就是键值（两者是同一个值），因此第一个参数与第二个参数的值永远都是一样的。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>]);</span><br><span class="line">set1.forEach(<span class="function">(<span class="params">key, value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key + <span class="string">':'</span> + value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Set实现交集，并集，差集"><a href="#Set实现交集，并集，差集" class="headerlink" title="Set实现交集，并集，差集"></a>Set实现交集，并集，差集</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="keyword">let</span> set3 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([...set2, ...set3]);  <span class="comment">//并集</span></span><br><span class="line"><span class="built_in">console</span>.log([...set2].filter(<span class="function"><span class="params">item</span> =&gt;</span> set3.has(item)));  <span class="comment">//交集</span></span><br><span class="line"><span class="built_in">console</span>.log([...set2].filter(<span class="function"><span class="params">item</span> =&gt;</span> !set3.has(item)));  <span class="comment">//差集(这里是a相对b的差集)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>与Set结构类似，也是不重复的值集合</p>
+<ul>
+<li>WeakSet 和 Set的区别</li>
+</ul>
+<ol>
+<li>WeakSet 只能储存对象引用，不能存放值，而 Set 对象都可以</li>
+<li>WeakSet 对象中储存的对象值都是被弱引用的，即垃圾回收机制不考虑 WeakSet 对该对象的应用，如果没有其他的变量或属性引用这个对象值，则这个对象将会被垃圾回收掉（不考虑该对象还存在于 WeakSet 中），所以，WeakSet 对象里有多少个成员元素，取决于垃圾回收机制有没有运行，运行前后成员个数可能不一致，遍历结束之后，有的成员可能取不到了（被垃圾回收了），WeakSet 对象是无法被遍历的（ES6 规定 WeakSet 不可遍历），也没有办法拿到它包含的所有元素</li>
+</ol>
+<h2 id="Map-字典"><a href="#Map-字典" class="headerlink" title="Map(字典)"></a>Map(字典)</h2><p>JavaScript的对象本质上是键值对的集合(Hash 结构)，但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。<br>Es6的Map提供了这一解决办法，Map键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
+<ul>
+<li>Map 和 Set的区别</li>
+</ul>
+<ol>
+<li>共同点：集合、字典 可以储存不重复的值</li>
+<li>不同点：集合 是以 [value, value]的形式储存元素，字典 是以 [key, value] 的形式储存。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> o = &#123;<span class="attr">p</span>: <span class="string">'haha'</span>&#125;</span><br><span class="line">m.set(o, <span class="string">'content'</span>)</span><br><span class="line">m.get(o)	<span class="comment">// content</span></span><br><span class="line"></span><br><span class="line">m.has(o)	<span class="comment">// true</span></span><br><span class="line">m.delete(o)	<span class="comment">// true</span></span><br><span class="line">m.has(o)	<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span>  map1 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map1.set(<span class="string">'a'</span>, <span class="number">1</span>);</span><br><span class="line">map1.set(<span class="string">'a'</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(map1) <span class="comment">//'a' =&gt; 2</span></span><br></pre></td></tr></table></figure>
+❗ 注意，只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line">map.set([<span class="string">'a'</span>], <span class="number">555</span>);</span><br><span class="line">map.get([<span class="string">'a'</span>]) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="Map的属性和方法"><a href="#Map的属性和方法" class="headerlink" title="Map的属性和方法"></a>Map的属性和方法</h3><ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>constructor：构造函数</li>
+<li>size：返回字典中所包含的元素个数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">  [<span class="string">'name'</span>, <span class="string">'An'</span>],</span><br><span class="line">  [<span class="string">'des'</span>, <span class="string">'JS'</span>]</span><br><span class="line">]);</span><br><span class="line">map.size <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>方法<ul>
+<li>操作方法</li>
+</ul>
+<ol>
+<li>set(key, value)：向字典中添加新元素</li>
+<li>get(key)：通过键查找特定的数值并返回</li>
+<li>has(key)：判断字典中是否存在键key</li>
+<li>delete(key)：通过键 key 从字典中移除对应的数据</li>
+<li>clear()：将这个字典中的所有元素删除<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">m.set(<span class="string">'a'</span>, <span class="number">2</span>);</span><br><span class="line">m.get(<span class="string">'a'</span>); <span class="comment">//2</span></span><br><span class="line">m.has(<span class="string">'a'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">m.delete(<span class="string">'a'</span>);</span><br><span class="line">m.has(<span class="string">'a'</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>遍历方法    遍历的顺序就是插入数据的顺序</li>
+</ul>
+<ol>
+<li>Map.prototype.keys()：返回键名的遍历器。</li>
+<li>Map.prototype.values()：返回键值的遍历器。</li>
+<li>Map.prototype.entries()：返回所有成员的遍历器。</li>
+<li>Map.prototype.forEach()：遍历 Map 的所有成员。</li>
+</ol>
+</li>
+</ul>
+<h3 id="Map与数据结构的相互转化"><a href="#Map与数据结构的相互转化" class="headerlink" title="Map与数据结构的相互转化"></a>Map与数据结构的相互转化</h3><ol>
+<li>Map转化为数组<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map.set(<span class="string">'a'</span>, <span class="number">1</span>).set(<span class="string">'b'</span>, <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log([...map]);  <span class="comment">//通过扩展运算符</span></span><br></pre></td></tr></table></figure></li>
+<li>数组转化为Map<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map1 = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'a'</span>, <span class="number">1</span>], [<span class="string">'abc'</span>]]);</span><br><span class="line"><span class="built_in">console</span>.log(map1)</span><br></pre></td></tr></table></figure></li>
+<li>Map转化为对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map2 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map2.set(<span class="string">'c'</span>, <span class="number">1</span>).set(<span class="string">'b'</span>, <span class="number">2</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MaptoObj</span>(<span class="params">map</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> Obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    Obj[key] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>对象转化为Map<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;</span><br><span class="line">  <span class="string">'x'</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">'y'</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjtoMap</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> map3 = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">    map3.set(key, obj[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> map3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Map转化为JSON<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapToJson</span>(<span class="params">map</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify([...map]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> map4 = <span class="keyword">new</span> <span class="built_in">Map</span>().set(<span class="string">'name'</span>, <span class="string">'An'</span>).set(<span class="string">'des'</span>, <span class="string">'JS'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(mapToJson(map4));</span><br></pre></td></tr></table></figure></li>
+<li>JSON转化为Map<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonToStrMap</span>(<span class="params">jsonStr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ObjtoMap(<span class="built_in">JSON</span>.parse(jsonStr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonToStrMap(<span class="string">'&#123;"name": "An", "des": "JS"&#125;'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2>WeakMap 对象是一组键值对的集合，其中的键是弱引用对象，而值可以是任意。<br>❗ 注意：WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用。</li>
+</ol>
+<p>WeakMap 中，每个键对自己所引用对象的引用都是弱引用，在没有其他引用和该键引用同一对象，这个对象将会被垃圾回收（相应的key则变成无效的），所以，WeakMap 的 key 是不可枚举的。</p>
+<ul>
+<li>属性</li>
+</ul>
+<ol>
+<li>constructor：构造函数</li>
+</ol>
+<ul>
+<li>方法</li>
+</ul>
+<ol>
+<li>has(key)：判断是否有 key 关联对象</li>
+<li>get(key)：返回key关联对象（没有则则返回 undefined）</li>
+<li>set(key)：设置一组key关联对象</li>
+<li>delete(key)：移除 key 的关联对象</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Set</li>
+</ul>
+<ol>
+<li>成员为一，无序且不重复</li>
+<li>只有键值，没有键名，也可以说是键值与键名一致[value, value]</li>
+<li>可以用于数组去重</li>
+<li>可以遍历，方法有：add、delete、has</li>
+<li>很容易实现交集，并集，差集</li>
+</ol>
+<ul>
+<li>WeakSet</li>
+</ul>
+<ol>
+<li>成员都是对象</li>
+<li>成员都是弱引用，可以被垃圾回收机制回收，可以用来保存DOM节点，不容易造成内存泄漏</li>
+<li>不能遍历，方法有add、delete、has</li>
+</ol>
+<ul>
+<li>Map</li>
+</ul>
+<ol>
+<li>本质上是键值对的集合，类似集合,但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</li>
+<li>可以遍历，方法很多可以跟各种数据格式转换</li>
+</ol>
+<ul>
+<li>WeakMap</li>
+</ul>
+<ol>
+<li>只接受对象作为键名（null除外），不接受其他类型的值作为键名</li>
+<li>键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的</li>
+<li>不能遍历，方法有get、set、has、delete</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>es6</tag>
+        <tag>数组去重</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>百度一二面经</title>
+    <url>/posts/baidu.html</url>
+    <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
+<ol>
+<li><p>算法：去除一个数组中的全部0.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] !==  <span class="number">0</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果不用新数组怎么处理</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let newArr = [];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] === <span class="number">0</span>) &#123;</span><br><span class="line">      arr.splice(i, <span class="number">1</span>);</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果在增加去除字符串0呢，和空字符串呢？<br>开始没想起来，后面面试官提示了我看你是用”===”来判断的，知道”===”和”==”的区别吗?<br>后来就想起来了，不能用”===”，用”==”就可以了，就可以判断空字符串和”==”这些了</p>
+</li>
+<li><p>算法：一个长度为100的数组，里面是0 - 100的随机数，用一个新数组统计出里面的0-9的数，提示: 99是两个9,也要统计出两个9<br>一开始没听清面试官的题目，只是统计了0-9的数。后面有改了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  开始数组乱序都不知道怎么写了，还问了面试官，尴尬</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  arr.push(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() *<span class="number">100</span>))</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">num</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> big = <span class="number">0</span>, small = <span class="number">0</span>; <span class="comment">//整数部分，和个位数</span></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(item &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      newArr[item]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      small = item % <span class="number">10</span>;</span><br><span class="line">      big = (item - small) / <span class="number">10</span>;</span><br><span class="line">      newArr[small]++;</span><br><span class="line">      newArr[big]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>冒泡知道吗？讲一下，事件委托知道吗？实现一个</p>
+</li>
+</ol>
+<p>。。。 手写代码<br>4. 实现垂直居中的办法<br>5. 上下两列布局，下面高度为40px，上面自适应<br>6. 说说vue的虚拟DOM，以及优缺点<br>7. 看你之前博客写过手动生成虚拟DOM的，用一个构造函数来实现下。</p>
+<ul>
+<li>我忘记了，写的有点时间长了，后面就和面试官说了一些步骤<ol start="8">
+<li>反问阶段 </li>
+</ol>
+</li>
+</ul>
+<h2 id="百度二面-挂-1-5h"><a href="#百度二面-挂-1-5h" class="headerlink" title="百度二面(挂) 1.5h"></a>百度二面(挂) 1.5h</h2><ol>
+<li>自我介绍</li>
+<li>介绍项目以及难点</li>
+<li>es6的箭头函数，参数问题</li>
+<li>聊了下跨域以及项目中的跨域</li>
+<li>问了我axios的一些知识，以及手写axios<ul>
+<li>没写出来</li>
+</ul>
+</li>
+<li>aa-bb-cc变成AaBbCc用函数实现下<ul>
+<li>写出来了但是后面优化不会</li>
+</ul>
+</li>
+<li>异步编程的一些问题</li>
+<li>反问阶段</li>
+</ol>
+<p>最后还是挂了，有点可惜/(ㄒoㄒ)/~~</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>政采云一面面经</title>
+    <url>/posts/ZCY.html</url>
+    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
+<ol>
+<li>自我介绍</li>
+<li>问了好多简单的(很容易被忽略的题目)</li>
+<li>html有哪些表单标签。</li>
+<li>html有哪些标题标签，</li>
+</ol>
+<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>能不能说下前端缓存？</title>
+    <url>/posts/cache.html</url>
+    <content><![CDATA[<p>浏览器的缓存机制：强缓存和协商缓存</p>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>浏览器的缓存作用分为两种情况，一种是需要发送HTTP请求的，一种是不需要发送的。</p>
+<ol>
+<li>不需要发送HTTP请求的<br>首先是检查强缓存，这个阶段是不需要发送HTTP请求的。<br>问题&amp;Q: 如何检查强缓存呢?<br>回答&amp;A: 通过检查相应的字段。<ul>
+<li>在HTTP/1.0中，检查的是Expires</li>
+<li>在HTTP/1.1中，检查的是Cache-control</li>
+</ul>
+</li>
+</ol>
+<h4 id="Expires-过期时间"><a href="#Expires-过期时间" class="headerlink" title="Expires  过期时间"></a>Expires  过期时间</h4><p>存在于服务器中的返回头中，告诉浏览器在这个过期时间端内可以直接从缓存获取数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Expires: Wed, <span class="number">22</span> Nov <span class="number">2019</span> <span class="number">08</span>:<span class="number">41</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+
+<p>缺点：服务器的时间和浏览器的时间可能不一致，那返回的时间就是不准确的了。因此在HTTP/1.1被抛弃了</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>这个用来控制的不是具体的时间点，而是采用过期时长来控制缓存，对应的缓存应该是max-age</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Cache-Control:max-age=<span class="number">3600</span></span><br></pre></td></tr></table></figure>
+<p>public:  浏览器经过到达源服务器的中间任意缓存服务器都可以缓存<br>private： 这种情况就是只有浏览器能缓存了，中间的代理服务器不能缓存。<br>no-cache: 跳过当前的强缓存，发送HTTP请求，即直接进入协商缓存阶段。<br>no-store：非常粗暴，不进行任何形式的缓存。<br>s-maxage：这和max-age长得比较像，但是区别在于s-maxage是针对代理服务器的缓存时间。<br>must-revalidate: 是缓存就会有过期的时候，加上这个字段一旦缓存过期，就必须回到源服务器验证。</p>
+<p>❗ 注意：值得注意的是，当Expires和Cache-Control同时存在的时候，Cache-Control会优先考虑。</p>
+<p>当缓存时间都超时了，这时候就需要到协商缓存。</p>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>强缓存失效后，浏览器在请求头中携带 <strong>缓存tag</strong> 相应的缓存服务器发送请求，由服务器根据这个tag，来决定是否使用缓存，这就是协商缓存。</p>
+<p>协商缓存分为两种：Last-Modified 和 ETag</p>
+<h4 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h4><p>即资源的最终的修改时间。浏览器第一次给服务器发送请求后，服务器会在请求投中加上这个字段。</p>
+<p>了解这个还需要了解另外一个字段：<strong>If-Modified-Since</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">If-Modified-Since:  Thu, <span class="number">15</span> Apr <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+<p>表示是在2004.4.15更新后的时间</p>
+<p>此时如果 <strong>Last-Modified</strong> 字段为</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Last-Modified:  Sun, <span class="number">29</span> Aug <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+<p>表示资源的最后的修改时间为：2004.8.29</p>
+<ul>
+<li>总结：<br>如果<strong>If-Modified-Since</strong>的时间小于<strong>Last-Modified</strong>的时间，表示是时候更新了<br>否则直接返回304状态码， 告诉浏览器直接用缓存</li>
+</ul>
+<h4 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h4><p>将资源(文件)以字符串的形式给文件生成唯一标识，当资源发生改变时，这个值就会改变。</p>
+<p>在此之前还需要了解另外一个字段: <strong>If-None-Match</strong></p>
+<p>浏览器在收到ETag的值时，会在下次请求时会将这个值作为If-None-Match这个字段的内容，然后会与服务器上的ETag值进行对比。</p>
+<ul>
+<li>如果不一样时，说明资源更新了，需要返回新的资源，然后需要发送新的http请求获取最新资源</li>
+<li>一样时，返回状态码304，告诉浏览器直接用缓存</li>
+</ul>
+<h3 id="Last-Modified-与-ETag-对比"><a href="#Last-Modified-与-ETag-对比" class="headerlink" title="Last-Modified 与 ETag 对比"></a>Last-Modified 与 ETag 对比</h3><ol>
+<li><p>在精度上。<br>ETag优于Last-Modified.因为ETag时按照内容给资源上标识，因此能准确感知资源的变化。Last-Modified在一些特殊的情况并不能准确感知资源变化。</p>
+<ul>
+<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
+<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
+</ul>
+</li>
+<li><p>在性能上。<br>Last-Modified优于ETag，也很好理解，Last-Modified仅仅只是记录一个时间点，而Etag需要根据文件的具体内容生成哈希值。</p>
+</li>
+</ol>
+<p>❗ 注意：如果两种方式都支持的话，服务器会优先考虑ETag。</p>
+<h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><p>当Last-Modified 或者 ETag返回304状态时，我们需要从缓存中拿去资源，可是缓存的资源放在哪呢？<br>浏览器中的缓存位置一共有四种，按优先级从高到低排列分别是：</p>
+<ul>
+<li>Service Worker</li>
+<li>Memory Cache</li>
+<li>Disk Cache</li>
+<li>Push Cache</li>
+</ul>
+<h4 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h4><p>Service Worker是PWA的重要实现机制。</p>
+<ul>
+<li>原理<br>让 JS 运行在主线程之外，由于它脱离了浏览器的窗体，因此无法直接访问DOM</li>
+<li>用法<br>官方的React框架的时候会生成一个serveice-worker.js。他在离线缓存、消息推送和网络代理等起到了很大的作用</li>
+</ul>
+<h4 id="Memory-Cache-和-Disk-Cache"><a href="#Memory-Cache-和-Disk-Cache" class="headerlink" title="Memory Cache 和 Disk Cache"></a>Memory Cache 和 Disk Cache</h4><p>即内存缓存和磁盘缓存<br>效率上Memory Cache比Disk Cache快。存储容量和存储时长Disk Cache更有优势。</p>
+<h4 id="Push-Cache"><a href="#Push-Cache" class="headerlink" title="Push Cache"></a>Push Cache</h4><p>即推送缓存，这是浏览器缓存的最后一道防线。它是 HTTP/2 中的内容，虽然现在应用的并不广泛，但随着 HTTP/2 的推广，它的应用越来越广泛。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>浏览器的缓存机制：首先会对Cache-cache或者Expires字段进行检查(这里Expires就不进行考虑了，因为他是Http1.0，已经被淘汰)，判断有无强缓存，如果强缓存可以用，就直接使用，否则就进入协商缓存阶段。<br>在协商缓存中，浏览器会发送http请求，服务器会通过请求头中的If-Modified-Since与Last-Modified字段或者If-None-Match与ETag字段进行比较，判断资源是否更新。</p>
+<ul>
+<li>若资源更新，则返回新的资源和状态码200</li>
+<li>否则，返回状态304，告诉浏览器直接从缓存中获取。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>前端性能</category>
+        <category>HTTP</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+        <tag>缓存</tag>
+        <tag>前端性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cookie, Session是如何保持登录状态的</title>
+    <url>/posts/cookie-session.html</url>
+    <content><![CDATA[<p>首先，http是一个无状态的协议，它自生不对请求和响应之间的通信状态进行保存</p>
+<p>服务器并不会对每个人做特殊处理，服务器只对请求负责，并不对请求的人负责。</p>
+<p>cookie 和 session 都是帮助http进行状态管理的一种手段</p>
+<h3 id="cookie-对比-session"><a href="#cookie-对比-session" class="headerlink" title="cookie 对比 session"></a>cookie 对比 session</h3><ol>
+<li>保存位置<br>cookie保存在用户的客户端，session保存在服务端</li>
+<li>生命周期<br>cookie由用户指定或使用默认的过期时间，在这段时间cookie都保存在客户端<br>session属于一次对话，如果会话关闭，浏览器关闭，服务器启动都会导致session的清除。</li>
+<li>数据类型<br>cookie是一堆字符串， session是某种object</li>
+<li>安全性<br>cookie一般只保存一些用户的行为习惯，一些密码都是经过加密的，即使泄漏也无关紧要<br>session则保存用户相关的内容</li>
+</ol>
+<p>Last-Modified 该资源最终修改的时间</p>
+<ul>
+<li>cookie<br>存储在用户本地终端的数据，用来存储用户信息<br>参数：<br>expires/Max-age(过期时间):  cookie的有效期(若不指定则默认浏览器关闭为止)<br>path：设置cookie在哪些路径范围内有效<br>secure：为true只能在https获得<br>HTTPOnly：使得js脚本无法获得Cookie，主要目的是为了防止跨站脚本攻击(XSS).<br>这样使用js的document.cookie无法读取附加过后的Cookie的内容<ol>
+<li>删除cookie<br>cookie一旦从服务器端发送至客户端，服务端就无法删除Cookie了，但是可以通过覆盖一起的cookie，修改过期时间为过去的时间达到删除cookie的方法</li>
+</ol>
+</li>
+<li>session<br>当服务器在为某个客户端请求创建一个session的时候，服务器会首先检索客户端的请求是否已包含一个session标识session.id<br>如果检索出来，服务器会使用这次的session识别出来的用户，否则就会创建一个新的session并生成一个session.id字段。<br>问题&amp;Q ：<br>如何把session.id传递给服务器呢？    -》 url重写</li>
+</ul>
+<p>回答&amp;A :</p>
+<ol>
+<li>作为url的附加路径<br>‘http://…./xxx;jsessionid=abcdefjijeoijoifjioe’</li>
+<li>作为url的查询字段<br>‘http://…./xxx?jsessionid=abcdefjijeoijoifjioe’</li>
+</ol>
+<h3 id="cookie和localStorage，sessionStorage的区别"><a href="#cookie和localStorage，sessionStorage的区别" class="headerlink" title="cookie和localStorage，sessionStorage的区别"></a>cookie和localStorage，sessionStorage的区别</h3><ol>
+<li>存储大小<br>cookie的数据大小不能超过4k<br>虽然localStorage, sessionStorage也有存储大小的限制，但是比cookie大的多</li>
+<li>有效时间<br>localStorage: 数据永久存储，浏览器关闭不会删除数据，除非主动删除数据<br>sessionStorage: 一次会话的数据，在浏览器关闭后会被删除<br>cookie：在其设置的有效期之内一直有效 expires/Max-age(过期时间)</li>
+<li>sessionStorage<ol>
+<li>会话级别的存储</li>
+<li>临时性的，页面打开有，页面关闭没有</li>
+<li>数据不共享</li>
+<li>通过a标签来跳出一个页面，则sessionStorage共享</li>
+</ol>
+</li>
+<li>localStorage<ol>
+<li>永久性的存储</li>
+<li>持久化的数据存储</li>
+<li>可以数据共享</li>
+<li>不能跨域</li>
+</ol>
+</li>
+<li>cookie<ol>
+<li>可以设置的cookie的有效期max-age，在有效期内一直有效</li>
+<li>在同源内且符合path规则的路径中都有效</li>
+<li>如果设置的max-age为0，则表示删除该cookie</li>
+<li>如果设置的max-age为负数，则表示该cookie仅在本浏览器窗口以及本窗口打开的子窗口内有效，关闭窗口后该cookie即失效。</li>
+</ol>
+</li>
+</ol>
+<h3 id="csrf-跨站请求伪造"><a href="#csrf-跨站请求伪造" class="headerlink" title="csrf(跨站请求伪造)"></a>csrf(跨站请求伪造)</h3><ol>
+<li><p>原理<br>用户在某个重要网站登入期间，即cookie还未过期时间，又不小心进入某个攻击网站，攻击网站会获取那个重要网站的cookie，然后在cookie未过期的时间，攻击者利用cookie登入到那个重要网站，这样被会误以为是原用户进入的，造成财产损失。</p>
+</li>
+<li><p>防御</p>
+<ol>
+<li><p>检查Referer字段<br>在HTTP检查Referer字段，通常应该为同一域名下的请求, 如果不在同一域名下，服务器能够识别为恶意访问</p>
+</li>
+<li><p>添加token验证</p>
+</li>
+</ol>
+<p>开发者可以在开发时在HTTP请求中添加一个token中间验证，并在服务端设置一个拦截器来验证这个token，如果没有或者验证失败，都会被认为是csrf攻击而拒绝请求</p>
+</li>
+</ol>
+<h3 id="xss-跨站脚本攻击"><a href="#xss-跨站脚本攻击" class="headerlink" title="xss(跨站脚本攻击)"></a>xss(跨站脚本攻击)</h3><ol>
+<li>原理<br>利用js脚本来动态获取用户的cookie信息<br>监听用户行为，比如输入账号密码后直接发送到黑客服务器。<br>修改 DOM 伪造登录表单。<br>在页面中生成浮窗广告。</li>
+<li>防御<ol>
+<li>无论是前端还是服务端，都要对用户的输入进行转码和过滤</li>
+<li>很多的Xss攻击都是窃取cookie的值，在设置了HttpOnly后，这样就无法获得cookie值</li>
+<li>利用CSP(浏览器的安全策略)<br>例如知乎跳转到其他页面时会提示用户保护财产安全等<br>问题&amp;Q: 对Cookie了解多少</li>
+</ol>
+</li>
+</ol>
+<p>Cookie是为了解决http协议缺陷产出的，http协议是一个无状态的协议，它每次请求的独立，不相关的，默认不保留状态信息，而cookie就是设计来保存客户端的状态信息的。<br>在相同域名下发送请求时，都会携带cookie，服务器拿到cookie进行解析，拿到客户端的状态</p>
+<p>缺陷：</p>
+<ol>
+<li>容量缺陷。cookie的最大容量为4kb，存储的信息没有localStorage和sessionStorage大，它俩都为5MB</li>
+<li>性能缺陷。在域名内的地址内发送请求，都会发送完整的cookie，这样随着请求增多的时候，非常消耗性能</li>
+<li>安全缺陷。cookie在未设置HTTPOnly属性的时候，cookie能由js动态获取，用户信息会丢失</li>
+</ol>
+<ul>
+<li><p>localStorage<br>存储方式：是存储本地，永久性储存，不主动删除的话不会消失。<br>容量：容量很大，有5MB。<br>安全：因为是存储在本地，默认不参与服务端的通信，这样就会避免cookie的安全性问题</p>
+</li>
+<li><p>sessionStorage<br>存储方式：是会话级别的存储，在会话期间存储，会话结束后被删除<br>容量：容量很大，为5MB<br>安全：相比于cookie还是更加安全</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>HTTP</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快手一二面面经</title>
+    <url>/posts/kuaishou.html</url>
+    <content><![CDATA[<h2 id="快手一面-效率工程"><a href="#快手一面-效率工程" class="headerlink" title="快手一面(效率工程)"></a>快手一面(效率工程)</h2><ol>
+<li>一些css知识，伪类，选择器等</li>
+<li>实现垂直居中的办法</li>
+<li>三列布局的办法</li>
+<li>js的数据类型，以及typeof的使用，typeof具体会显示出什么，怎么判断是数组等等</li>
+<li>一道代码题，说出其答案<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="string">'b'</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fc</span>(<span class="params">p</span>) </span>&#123;</span><br><span class="line">  p = &#123; <span class="attr">a</span>: <span class="string">'c'</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line">fc(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.a)</span><br></pre></td></tr></table></figure></li>
+<li>异步编程的解决方案</li>
+<li>使用promise封装一个setTimeout异步操作5秒后打印数字1</li>
+<li>问了一些项目问题</li>
+<li>一些vue问题，以及手写模拟vuex的过程</li>
+<li>反问阶段</li>
+<li>如何学习的，以及对学习的一些建议</li>
+</ol>
+<h2 id="快手二面"><a href="#快手二面" class="headerlink" title="快手二面"></a>快手二面</h2><p>面试体验很不好，网络很差，因为是刚回家面试的，面试官没问一个问题都挺不清，搞得我每个问题都问了面试官好几次，后面心态就这样炸了。。。唉😭</p>
+<ol>
+<li>自我介绍</li>
+<li>项目问题</li>
+<li>this指向问题，手动实现下</li>
+<li>一个算法，两个有序数组合并成一个数组，不能用api</li>
+<li>强缓存和协商缓存</li>
+<li>HTTP头部字段有哪些</li>
+<li>跨域问题</li>
+<li>事件循环</li>
+<li>反问阶段</li>
+<li>有些问题记不得了，网络不好<br>后面和面试官解释了下我说网络不好，今天发挥的也不好，面试官说回和一面面试官商量下。。。<br>后面隔了几次问HR都说我没挂，待安排中，估计被当成备胎了，惨。。。/(ㄒoㄒ)/~~</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序：仿小米商城</title>
+    <url>/posts/miShop.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>微信小程序作为一款耳熟能详的应用，相信大家或多或少都已经有过这方面的接触了。作为一名刚接触前端不久的小白，手写一款小程序是很好的对知识的一次巩固。下面让我们来开始小程序的开发吧。</p>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>开发工具:<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">VSCode</a>          <a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html?t=201714" target="_blank" rel="noopener">微信开发者工具</a></li>
+<li><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">图标icon</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/" target="_blank" rel="noopener">微信开发文档</a></li>
+<li><a href="https://youzan.github.io/vant-weapp" target="_blank" rel="noopener">有赞组件库</a></li>
+<li><a href="https://github.com/1970186643/lesson_shuidi/blob/master/mini_program/MIshop/utils/data.js" target="_blank" rel="noopener">自己Mock的数据</a><h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h2><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704c775205b1e1a?w=407&h=780&f=png&s=45355" alt="alt"><h1 id="页面解构"><a href="#页面解构" class="headerlink" title="页面解构"></a>页面解构</h1><h2 id="商城首页"><a href="#商城首页" class="headerlink" title="商城首页"></a>商城首页</h2><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704ca337a7c73b3?w=360&h=642&f=gif&s=20735531" alt="alt"><h3 id="页面解析"><a href="#页面解析" class="headerlink" title="页面解析"></a>页面解析</h3><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704cde4ab97c595?w=535&h=668&f=png&s=207788" alt="alt"></li>
+<li>Navigation是小程序的顶部导航组件。原生的Navigation组件并不满足的我们的需求，我们需要在其中加一个搜索框，这就需要我们对其进行自定义了。好了话不多说，撸起袖子就是干。<h4 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h4><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704caa27a4fe369?w=375&h=67&f=png&s=6490" alt="alt"><br>我们先要对你需要修改的页面json文件进行配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;navigationStyle&quot;: &quot;custom&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了写出来的Navigation能适配所有手机，我们也需要对app.js进行修改。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">App(&#123;</span><br><span class="line">  onLaunch: function () &#123;</span><br><span class="line">    &#x2F;&#x2F; 获取顶部栏信息</span><br><span class="line">    wx.getSystemInfo(&#123;</span><br><span class="line">      success: res &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F;导航高度</span><br><span class="line">        this.globalData.navHeight &#x3D; res.statusBarHeight + 46;</span><br><span class="line">      &#125;, fail(err) &#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  globalData: &#123;</span><br><span class="line">    userInfo: null,</span><br><span class="line">    navHeight: 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>微信官方提供了查询状态栏的高度的<a href="https://developers.weixin.qq.com/miniprogram/dev/api/base/system/system-info/wx.getSystemInfo.html" target="_blank" rel="noopener">API</a>(wx.getSystemInfo)，大家也可以自己看看。</p>
+<p>然后就是我们自定义导航栏的时候啦。直接上代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">  &lt;view class&#x3D;&#39;nav bg-white&#39; style&#x3D;&#39;height:&#123;&#123;navH&#125;&#125;px&#39;&gt;</span><br><span class="line">    &lt;view class&#x3D;&#39;nav-title&#39;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;INinputheader&quot;&gt;</span><br><span class="line">				&lt;image src&#x3D;&quot;..&#x2F;..&#x2F;images&#x2F;icon&#x2F;mi.png&quot; mode&#x3D;&quot;widthFix&quot; class&#x3D;&quot;image&quot;&#x2F;&gt;</span><br><span class="line">				&lt;text&gt;小米&lt;&#x2F;text&gt;</span><br><span class="line">        &lt;icon class&#x3D;&quot;INsearchicon&quot; type&#x3D;&quot;search&quot; size&#x3D;&quot;12&quot;&#x2F;&gt;</span><br><span class="line">        &lt;navigator url&#x3D;&quot;..&#x2F;search&#x2F;search&quot;&gt;</span><br><span class="line">            &lt;input class&#x3D;&quot;weui-input&quot; placeholder&#x3D;&quot;搜索商品&quot;&#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;navigator&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由于自定义导航栏的代码过于累赘，我们在此就不贴出来了。大家可以点击<a href="https://github.com/1970186643/lesson_shuidi/blob/master/mini_program/MIshop/pages/home/home.wxss" target="_blank" rel="noopener">这里</a><br>查看哦。其实还是觉得自定义的导航栏有点丑，但想要模仿的一模一样真的挺困难的。<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704cd1a2b6ce0c1?w=255&h=255&f=jpeg&s=10432" alt="alt"></p>
+<ul>
+<li>首页的轮播图区域，微信官方文档提供了<a href="https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html" target="_blank" rel="noopener">swiper组件</a>，直接用就好了。所以多看文档真的是一种有效的学习手段。</li>
+<li>首页的频道分类页面分别由不同的页面构成，点击相应的icon进行跳转</li>
+</ul>
+<p>我的思路是在js文件下每个icon下写对应的跳转后的url，这样使用wx:for就能跳转到各自相应的页面了，下面是部分代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;container1&quot;&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;flex-box&quot; &gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;list-item&quot; wx:for&#x3D;&quot;&#123;&#123;img_icon_Urls1&#125;&#125;&quot; wx:for-item&#x3D;&quot;icon1&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;navigator url&#x3D;&quot;&#123;&#123;icon1.url&#125;&#125;&quot;&gt;</span><br><span class="line">                &lt;image src&#x3D;&quot;&#123;&#123;icon1.icon_img&#125;&#125;&quot; class&#x3D;&quot;icon-size&quot;&#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;navigator&gt;</span><br><span class="line">        &lt;&#x2F;view&gt; </span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;flex-box&quot; &gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;list-item&quot; wx:for&#x3D;&quot;&#123;&#123;img_icon_Urls1&#125;&#125;&quot; wx:for-item&#x3D;&quot;icon1&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;text class&#x3D;&quot;text-center&quot;&gt;&#123;&#123;icon1.name&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">        &lt;&#x2F;view&gt; </span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;flex-box&quot; &gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;list-item&quot; wx:for&#x3D;&quot;&#123;&#123;img_icon_Urls2&#125;&#125;&quot; wx:for-item&#x3D;&quot;icon2&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;image src&#x3D;&quot;&#123;&#123;icon2.icon_img&#125;&#125;&quot; class&#x3D;&quot;icon-size&quot;&#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;view&gt; </span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;flex-box&quot; &gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;list-item&quot; wx:for&#x3D;&quot;&#123;&#123;img_icon_Urls2&#125;&#125;&quot; wx:for-item&#x3D;&quot;icon2&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;text class&#x3D;&quot;text-center&quot;&gt;&#123;&#123;icon2.name&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">        &lt;&#x2F;view&gt; </span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里数据我们都是放在一个js文件中的，在全局app.js进行了引用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import data from &quot;.&#x2F;utils&#x2F;data&quot;;</span><br><span class="line">App(&#123;</span><br><span class="line">  onLaunch: function () &#123;</span><br><span class="line">    Object.assign(this.globalData,data);</span><br><span class="line">    &#125;,</span><br><span class="line">    globalData: &#123;</span><br><span class="line">    userInfo: null,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这样我们在每个页面就可以引用数据的时候都需要声明以下代码，这样我们就可以在app.js文件中拿到自己需要的数据。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const app &#x3D; getApp();</span><br></pre></td></tr></table></figure>
+
+<p>下面是商城首页的js文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const showDetail&#x3D;(e)&#x3D;&gt;&#123;</span><br><span class="line">  const id &#x3D; e.currentTarget.dataset.pid;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">      url: &#96;&#x2F;pages&#x2F;commodity&#x2F;commodity?id&#x3D;$&#123;id&#125;&#96;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">const app &#x3D; getApp();</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    img_title_Urls:[],</span><br><span class="line">    img_icon_Urls1:[],</span><br><span class="line">    img_icon_Urls2:[],</span><br><span class="line">    recommand:[],</span><br><span class="line">    love:[],</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad()&#123;</span><br><span class="line">    const img_title_Urls &#x3D; app.globalData.img_title_Urls,</span><br><span class="line">          img_icon_Urls1 &#x3D; app.globalData.img_icon_Urls1,</span><br><span class="line">          img_icon_Urls2 &#x3D; app.globalData.img_icon_Urls2,</span><br><span class="line">          recommand &#x3D; app.globalData.recommand,</span><br><span class="line">          love &#x3D; app.globalData.love;         </span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      img_title_Urls,</span><br><span class="line">      img_icon_Urls1,</span><br><span class="line">      img_icon_Urls2,</span><br><span class="line">      recommand,</span><br><span class="line">      love,</span><br><span class="line">      navH: app.globalData.navHeight</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  showDetail,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>首页搜索功能<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704cfe4a49e4187?w=360&h=644&f=gif&s=7145730" alt="alt"></li>
+</ul>
+<p>页面解析：这里我们引用了有赞的组件的搜索框，如果搜索的内容匹配到了数据，我们就在其下方显示出来。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;van-search placeholder&#x3D;&quot;搜索商品&quot; value&#x3D;&quot;&#123;&#123; value &#125;&#125;&quot; background&#x3D;&quot;#FFFFFF&quot;  bind:search&#x3D;&quot;Search&quot;&#x2F;&gt;</span><br><span class="line">&lt;view class&#x3D;&quot;box&quot; wx:for&#x3D;&quot;&#123;&#123;good_list&#125;&#125;&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">  &lt;view data-pid&#x3D;&quot;&#123;&#123;item.id&#125;&#125;&quot; bindtap&#x3D;&quot;showDetail&quot;&gt;</span><br><span class="line">    &lt;text &gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;line&quot;&gt;&lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>思路分析：</p>
+<ul>
+<li>输入需要查询的关键字或者准确的内容，进行模糊查询。</li>
+<li>查询后就在下方显示出查询到的内容。</li>
+<li>点击内容会跳到相应商品的详细信息。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var search &#x3D; (list,keyword) &#x3D;&gt;&#123; &#x2F;&#x2F;模糊查询函数</span><br><span class="line">  var arr &#x3D; [];</span><br><span class="line">  for(let i &#x3D; 0;i &lt; list.length;i++)</span><br><span class="line">  &#123;</span><br><span class="line">    if(list[i].split(keyword).length &gt; 1)&#123;</span><br><span class="line">      arr.push(list[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;;</span><br><span class="line">const showDetail&#x3D;(e)&#x3D;&gt;&#123;</span><br><span class="line">  const id &#x3D; e.currentTarget.dataset.pid;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">      url: &#96;&#x2F;pages&#x2F;commodity&#x2F;commodity?id&#x3D;$&#123;id&#125;&#96;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">const app &#x3D; getApp();</span><br><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    commodity:[],   &#x2F;&#x2F;总商品列表</span><br><span class="line">    name:[],</span><br><span class="line">    good_list:[],   &#x2F;&#x2F;搜索后的商品列表</span><br><span class="line">    classify:[</span><br><span class="line">      &#123;</span><br><span class="line">        name:&quot;手机&quot;,</span><br><span class="line">        url:&quot;..&#x2F;navi&#x2F;phone&#x2F;phone&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  Search(event)&#123;</span><br><span class="line">    const name &#x3D; this.data.name;</span><br><span class="line">    const commodity &#x3D; this.data.commodity;</span><br><span class="line">    const keyword &#x3D; event.detail;</span><br><span class="line">    &#x2F;&#x2F; wx.setStorageSync(&#39;history&#39;,keyword); &#x2F;&#x2F;设置搜索历史</span><br><span class="line">    var arr &#x3D; [];</span><br><span class="line">    arr &#x3D; search(name,keyword);</span><br><span class="line">    var product &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i &lt; commodity.length;i++)&#123;</span><br><span class="line">      for(let j &#x3D; 0;j &lt; arr.length ;j++)&#123;</span><br><span class="line">        if(commodity[i].name &#x3D;&#x3D; arr[j])&#123;</span><br><span class="line">          product.push(commodity[i]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      good_list:product</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad:function()&#123;</span><br><span class="line">    const commodity &#x3D; app.globalData.commodity_detial.filter(item&#x3D;&gt;&#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;);</span><br><span class="line">    var name &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i&lt;commodity.length;i++)&#123;</span><br><span class="line">      name.push(commodity[i].name)</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      name,</span><br><span class="line">      commodity</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  showDetail,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="商品分类页面"><a href="#商品分类页面" class="headerlink" title="商品分类页面"></a>商品分类页面</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d3dfea7a7bf2?w=360&h=642&f=gif&s=8582272" alt="alt"></p>
+<h3 id="页面解析-1"><a href="#页面解析-1" class="headerlink" title="页面解析"></a>页面解析</h3><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d1c85d8b1079?w=377&h=670&f=png&s=56422" alt="alt"></p>
+<p>思路分析：</p>
+<ul>
+<li>页面由两个scroll-view构成，左边为商品的菜单栏，右边为对应菜单的商品区。点击左边的菜单栏项目会跳到相应的商品区。这里由scroll-view里的参数scroll-into-view可以实现，值得注意的是此时设的id不能为数字，否则会报错。有不懂的童鞋，可以点击<a href="https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html" target="_blank" rel="noopener">这里</a>参考官方文档。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;main&quot;&gt;</span><br><span class="line">    &lt;scroll-view  scroll-y&#x3D;&quot;&#123;&#123;true&#125;&#125;&quot; class&#x3D;&quot;nav&quot; scroll-left&#x3D;&quot;&#123;&#123;navScrollLeft&#125;&#125;&quot; scroll-with-animation&#x3D;&quot;&#123;&#123;true&#125;&#125;&quot; &gt;</span><br><span class="line">        &lt;block wx:for&#x3D;&quot;&#123;&#123;navData&#125;&#125;&quot; wx:for-index&#x3D;&quot;id&quot; wx:for-item&#x3D;&quot;navItem&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">            &lt;view class&#x3D;&quot;nav-item &#123;&#123;currentTab &#x3D;&#x3D; id?&#39;active&#39;:&#39;&#39;&#125;&#125;&quot;  data-current&#x3D;&quot;&#123;&#123;id&#125;&#125;&quot; data-id&#x3D;&quot;&#123;&#123;navItem.id&#125;&#125;&quot;  bindtap&#x3D;&quot;scrollToView&quot;&gt;&#123;&#123;navItem.name&#125;&#125;&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;block&gt;</span><br><span class="line">    &lt;&#x2F;scroll-view&gt;</span><br><span class="line">    &lt;scroll-view scroll-y&#x3D;&quot;&#123;&#123;true&#125;&#125;&quot; scroll-with-animation&#x3D;&quot;&#123;&#123;true&#125;&#125;&quot; scroll-into-view&#x3D;&quot;&#123;&#123;toView&#125;&#125;&quot; enable-back-to-top scroll-top&#x3D;&quot;&#123;&#123;scrollTop&#125;&#125;&quot; class&#x3D;&quot;nav1&quot;&gt;</span><br><span class="line">        &lt;view  wx:for&#x3D;&quot;&#123;&#123;item&#125;&#125;&quot; wx:for-item&#x3D;&quot;item&quot; wx:key&#x3D;&quot;index&quot; &gt;</span><br><span class="line">            &lt;view id&#x3D;&quot;&#123;&#123;item.id&#125;&#125;&quot; &gt;</span><br><span class="line">                &lt;view class&#x3D;&quot;flex-box&quot;&gt;</span><br><span class="line">                    &lt;view class&#x3D;&quot;linebox&quot;&gt;</span><br><span class="line">                        &lt;view class&#x3D;&quot;line1&quot;&gt;&lt;&#x2F;view&gt;</span><br><span class="line">                    &lt;&#x2F;view&gt;</span><br><span class="line">                    &lt;text class&#x3D;&quot;title&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">                    &lt;view class&#x3D;&quot;linebox&quot;&gt;</span><br><span class="line">                        &lt;view class&#x3D;&quot;line2&quot;&gt;&lt;&#x2F;view&gt;</span><br><span class="line">                    &lt;&#x2F;view&gt;</span><br><span class="line">                &lt;&#x2F;view&gt;</span><br><span class="line">                &lt;view class&#x3D;&quot;flex-box&quot; &gt;</span><br><span class="line">                    &lt;view  wx:for&#x3D;&quot;&#123;&#123;item.cate_list&#125;&#125;&quot; wx:for-item&#x3D;&quot;cate&quot; wx:key&#x3D;&quot;&#123;&#123;item.id&#125;&#125;&quot;&gt;</span><br><span class="line">                        &lt;image src&#x3D;&quot;&#123;&#123;cate.img&#125;&#125;&quot; class&#x3D;&quot;img-size list-item&quot; mode&#x3D;&quot;widthFix&quot; data-cid&#x3D;&quot;&#123;&#123;cate.id&#125;&#125;&quot; bindtap&#x3D;&quot;showcDetail&quot;&#x2F;&gt;</span><br><span class="line">                        &lt;text class&#x3D;&quot;font&quot;&gt;&#123;&#123;cate.name&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">                    &lt;&#x2F;view&gt; </span><br><span class="line">                &lt;&#x2F;view&gt;</span><br><span class="line">            &lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;scroll-view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里是跳转到相应商品区的代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scrollToView(e)&#123;   </span><br><span class="line">  const cur &#x3D; e.currentTarget.dataset.current; </span><br><span class="line">  const id &#x3D; e.currentTarget.dataset.id;</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    toView: id,</span><br><span class="line">    currentTab: cur,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>点击右边的商品区域会跳转到对应商品的详细信息页面。因为我们这里的商品详情页都是统一做的，跳转的时候我们会传递商品的id过去,在详情页我们会对其匹配相应的id，这样商品的详细信息就可以对应的输出来了。下面为跳转到商品详情页代码。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const showcDetail&#x3D;(e)&#x3D;&gt;&#123;</span><br><span class="line">  const id &#x3D; e.currentTarget.dataset.cid;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">      url: &#96;&#x2F;pages&#x2F;commodity&#x2F;commodity?id&#x3D;$&#123;id&#125;&#96;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="商品详情页面"><a href="#商品详情页面" class="headerlink" title="商品详情页面"></a>商品详情页面</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d8e4a7545ae4?w=360&h=644&f=gif&s=5143449" alt="alt"></p>
+<h3 id="页面解析-2"><a href="#页面解析-2" class="headerlink" title="页面解析"></a>页面解析</h3><ul>
+<li>这里为所有商品的统一界面，跳转时我们会把相应商品的数据传输到这个页面，这样显示的就是为不同的商品界面。</li>
+<li>由于原生的weui有些太丑了，就引用了有赞的<a href="https://youzan.github.io/vant-weapp/#/tab" target="_blank" rel="noopener">tabs</a>和<a href="https://youzan.github.io/vant-weapp/#/goods-action" target="_blank" rel="noopener">GoodsAction</a>组件。有兴趣的童鞋可以点击查看。</li>
+</ul>
+<p>这里贴代码的时候mackdown编辑出了问题，所以只贴了tabs标签和下方的加入购物车部分。完整的代码可以点<a href="https://github.com/1970186643/lesson_shuidi/blob/master/mini_program/MIshop/pages/commodity/commodity.wxml" target="_blank" rel="noopener">这里</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">  &lt;van-tabs active&#x3D;&quot;&#123;&#123;active&#125;&#125;&quot;  title-active-color&#x3D;&quot;#ff4a00&quot; title-inactive-color&#x3D;&quot;#c0c0c0c&quot; duration&#x3D;&quot;0.1&quot; 	&gt;</span><br><span class="line">    &lt;van-tab title&#x3D;&quot;商品详情&quot;&gt;</span><br><span class="line">      &lt;view wx:for&#x3D;&quot;&#123;&#123;commodity.overview&#125;&#125;&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">        &lt;image src&#x3D;&quot;&#123;&#123;item&#125;&#125;&quot; mode&#x3D;&quot;widthFix&quot; class&#x3D;&quot;i1&quot;&#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;van-tab&gt;</span><br><span class="line">    &lt;van-tab title&#x3D;&quot;规格参数&quot;&gt;</span><br><span class="line">      &lt;view wx:for&#x3D;&quot;&#123;&#123;commodity.parameter&#125;&#125;&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">        &lt;image src&#x3D;&quot;&#123;&#123;item&#125;&#125;&quot; mode&#x3D;&quot;widthFix&quot; class&#x3D;&quot;i1&quot;&#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;van-tab&gt;</span><br><span class="line">  &lt;&#x2F;van-tabs&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line">&lt;van-goods-action&gt;</span><br><span class="line">  &lt;van-goods-action-icon icon&#x3D;&quot;cart-o&quot; text&#x3D;&quot;购物车&quot; bind:click&#x3D;&quot;go_sh_cart&quot;&#x2F;&gt;</span><br><span class="line">  &lt;van-goods-action-button type&#x3D;&quot;warning&quot;color&#x3D;&quot;#ff4a00&quot; text&#x3D;&quot;加入购物车&quot;  bind:click&#x3D;&quot;go_select&quot;&#x2F;&gt;</span><br><span class="line">  &lt;van-goods-action-button type&#x3D;&quot;danger&quot; text&#x3D;&quot;立即购买&quot;  &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;van-goods-action&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="商品类别选择"><a href="#商品类别选择" class="headerlink" title="商品类别选择"></a>商品类别选择</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704da72fd155227?w=360&h=642&f=gif&s=1834257" alt="alt"></p>
+<h3 id="页面解析-3"><a href="#页面解析-3" class="headerlink" title="页面解析"></a>页面解析</h3><ul>
+<li>商品跳转后,会取得对应商品的数据。点击不同的商品类别，对应的值会进行改变。代码有点过长，这里只贴了部分，有兴趣的童鞋可以点击<a href="https://github.com/1970186643/lesson_shuidi/tree/master/mini_program/MIshop/pages/select_commodity" target="_blank" rel="noopener">这里</a>查看完整的。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">onLoad: function (options) &#123;</span><br><span class="line">  const id &#x3D; options.id;</span><br><span class="line">  const commodity &#x3D; app.globalData.commodity_detial.filter(item&#x3D;&gt;&#123;</span><br><span class="line">    return item.id &#x3D;&#x3D; id;</span><br><span class="line">  &#125;);</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    id:commodity[0].id,</span><br><span class="line">    commodity:commodity[0],</span><br><span class="line">    name:commodity[0].name,</span><br><span class="line">    version:commodity[0].select_list.version[0].name,</span><br><span class="line">    price:commodity[0].select_list.version[0].price,</span><br><span class="line">    color:commodity[0].select_list.color[0].name,</span><br><span class="line">    img_url:commodity[0].select_list.color[0].img  </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里同样用了有赞的步进器<a href="https://youzan.github.io/vant-weapp/#/stepper" target="_blank" rel="noopener">stepper</a>组件</li>
+</ul>
+<p>wxml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;van-stepper value&#x3D;&quot;&#123;&#123; 1 &#125;&#125;&quot; max&#x3D;&quot;5&quot; integer&#x3D;&quot;true&quot; bind:change&#x3D;&quot;onChange&quot; button-size&#x3D;&quot;40&quot; input-width&#x3D;&quot;40&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>js(这里可以取得步进器中的值)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">onChange(event) &#123;</span><br><span class="line">  const number &#x3D; event.detail;</span><br><span class="line">  &#x2F;&#x2F; console.log(number)</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    num:number</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>点击确定按钮后，加入到购物车当中，且不会影响到前面所添加的商品。这里确实卡了好久，脑壳疼。这里有个小坑，在使用wx.showToast要使用一个延时函数，否则调用成功提示会一闪而过。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  submit()&#123;</span><br><span class="line">    const that &#x3D; this;</span><br><span class="line">    wx.setStorageSync(&#39;id&#39;,that.data.id);</span><br><span class="line">    wx.setStorageSync(&#39;name&#39;,that.data.name);</span><br><span class="line">    wx.setStorageSync(&#39;img_url&#39;,that.data.img_url);</span><br><span class="line">    wx.setStorageSync(&#39;version&#39;,that.data.version);</span><br><span class="line">    wx.setStorageSync(&#39;price&#39;,that.data.price);</span><br><span class="line">    wx.setStorageSync(&#39;color&#39;,that.data.color);</span><br><span class="line">    wx.setStorageSync(&#39;num&#39;,that.data.num);</span><br><span class="line">    wx.setStorageSync(&#39;selected&#39;,that.data.selected);</span><br><span class="line">    const value &#x3D; wx.getStorageSync(&#39;cart_list&#39;);</span><br><span class="line">    const temp &#x3D; &#123;</span><br><span class="line">      &#39;id&#39;:wx.getStorageSync(&#39;id&#39;),</span><br><span class="line">      &#39;name&#39;: wx.getStorageSync(&#39;name&#39;),</span><br><span class="line">      &#39;img_url&#39;: wx.getStorageSync(&#39;img_url&#39;),</span><br><span class="line">      &#39;version&#39;: wx.getStorageSync(&#39;version&#39;),</span><br><span class="line">      &#39;price&#39;: wx.getStorageSync(&#39;price&#39;),</span><br><span class="line">      &#39;color&#39;: wx.getStorageSync(&#39;color&#39;),</span><br><span class="line">      &#39;num&#39;: wx.getStorageSync(&#39;num&#39;),</span><br><span class="line">      &#39;selected&#39;: wx.getStorageSync(&#39;selected&#39;),</span><br><span class="line">    &#125;</span><br><span class="line">    if(value &#x3D;&#x3D; &quot;&quot;)&#123;</span><br><span class="line">      wx.setStorageSync(&#39;cart_list&#39;, [temp]);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      wx.setStorageSync(&#39;cart_list&#39;, [temp, ...value]);</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F;使用wx.showToast时要使用一个延时(setTimeout)，否则成功调用后会一闪而过</span><br><span class="line">    wx.showToast(&#123;</span><br><span class="line">      title: &quot;成功加入购物车&quot;,</span><br><span class="line">      icon: &#39;success&#39;,</span><br><span class="line">      duration: 2000,</span><br><span class="line">      success()&#123;  </span><br><span class="line">        setTimeout(function()&#123;</span><br><span class="line">          wx.navigateBack(&#123;</span><br><span class="line">            delta: 1</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;, 1000);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="地址选择和新增地址页"><a href="#地址选择和新增地址页" class="headerlink" title="地址选择和新增地址页"></a>地址选择和新增地址页</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704dcdbc3c81235?w=360&h=640&f=gif&s=1585934" alt="alt"></p>
+<h3 id="页面解析-4"><a href="#页面解析-4" class="headerlink" title="页面解析"></a>页面解析</h3><ul>
+<li>这里新增的地址都是通过wx.getStorageSync的API保存在本地，以便后续的添加，当然有数据库操作更加方便。<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704dd3bc79473b2?w=800&h=736&f=png&s=138560" alt="alt"></li>
+</ul>
+<h2 id="发现页"><a href="#发现页" class="headerlink" title="发现页"></a>发现页</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d45b8975706a?w=360&h=644&f=gif&s=1759814" alt="alt"><br>这里没写太多，只是简单的切了下页面，发现抽奖功能没后台不好做。<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d4a710d1d2d7?w=320&h=240&f=jpeg&s=28923" alt="alt"></p>
+<h2 id="购物车页面"><a href="#购物车页面" class="headerlink" title="购物车页面"></a>购物车页面</h2><h3 id="页面解析-5"><a href="#页面解析-5" class="headerlink" title="页面解析"></a>页面解析</h3><p>首先判断购物车cart_list的值是否存在，这里用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wx:if&#x3D;&quot;&#123;&#123;cart_list &#x3D;&#x3D; &#39;&#39;&#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>作为判断条件。</p>
+<ul>
+<li>购物车为空时，显示购物车还是空的，到小米商城逛逛。点击按钮会跳转到商城首页。<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d4dab7eff38c?w=377&h=669&f=png&s=17405" alt="alt"></li>
+<li>购物车不为空时，可以对商品进行选择，计算总价，计算总数，滑动删除等操作。<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704d7e4ea329d03?w=360&h=646&f=gif&s=14062871" alt="alt"></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">  &lt;view wx:if&#x3D;&quot;&#123;&#123;cart_list &#x3D;&#x3D; &#39;&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;empty&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;cart_icon&quot;&gt;</span><br><span class="line">        &lt;image src&#x3D;&quot;..&#x2F;..&#x2F;images&#x2F;icon&#x2F;cart_empty.png&quot; mode&#x3D;&quot;aspectFill&quot; &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;prompt&quot;&gt;购物车还是空的&lt;&#x2F;view&gt;</span><br><span class="line">      &lt;button type&#x3D;&quot;warn&quot; size&#x3D;&quot;default&quot; class&#x3D;&quot;button&quot; style&#x3D;&quot;background: #ff6600;&quot; bindtap&#x3D;&quot;go&quot;&gt;</span><br><span class="line">        &lt;text &gt;到小米商城逛逛&lt;&#x2F;text&gt;</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;view wx:else class&#x3D;&quot;mt&quot;&gt;</span><br><span class="line">    &lt;view wx:for&#x3D;&quot;&#123;&#123;cart_list&#125;&#125;&quot; wx:key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;weui-slidecells&quot;&gt;</span><br><span class="line">            &lt;mp-slideview buttons&#x3D;&quot;&#123;&#123;slideButtons&#125;&#125;&quot; bindbuttontap&#x3D;&quot;slideButtonTap&quot; data-index&#x3D;&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">                &lt;view class&#x3D;&quot;weui-slidecell&quot;&gt;</span><br><span class="line">		    &lt;view class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">			&lt;view class&#x3D;&quot;icon&quot;&gt;</span><br><span class="line">			    &lt;icon wx:if&#x3D;&quot;&#123;&#123;item.selected&#125;&#125;&quot; type&#x3D;&quot;success&quot; color&#x3D;&quot;rgb(255,103,0)&quot; bindtap&#x3D;&quot;selectList&quot; data-index&#x3D;&quot;&#123;&#123;index&#125;&#125;&quot; size&#x3D;&quot;20&quot; class&#x3D;&quot;i&quot;&#x2F;&gt;</span><br><span class="line">			    &lt;icon wx:else type&#x3D;&quot;circle&quot; bindtap&#x3D;&quot;selectList&quot; data-index&#x3D;&quot;&#123;&#123;index&#125;&#125;&quot; size&#x3D;&quot;20&quot; color&#x3D;&quot;rgb(255,103,0)&quot; class&#x3D;&quot;i&quot;&#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;view&gt;</span><br><span class="line">			&lt;view class&#x3D;&quot;navi&quot;&gt;</span><br><span class="line">			    &lt;navigator url&#x3D;&quot;..&#x2F;commodity&#x2F;commodity?id&#x3D;&#123;&#123;item.id&#125;&#125;&quot;&gt;</span><br><span class="line">				&lt;image  src&#x3D;&quot;&#123;&#123;item.img_url&#125;&#125;&quot;&gt;&lt;&#x2F;image&gt;</span><br><span class="line">			    &lt;&#x2F;navigator&gt;</span><br><span class="line">			&lt;&#x2F;view&gt;</span><br><span class="line">			&lt;text class&#x3D;&quot;title&quot;&gt;&#123;&#123;item.name&#125;&#125; &#123;&#123;item.version&#125;&#125; &#123;&#123;item.color&#125;&#125;&lt;&#x2F;text&gt;</span><br><span class="line">			&lt;text class&#x3D;&quot;num&quot;&gt;&#123;&#123;item.num&#125;&#125; X&lt;&#x2F;text&gt;</span><br><span class="line">			&lt;text class&#x3D;&quot;price&quot;&gt;　&#123;&#123;item.price&#125;&#125;元&lt;&#x2F;text&gt;</span><br><span class="line">		    &lt;&#x2F;view&gt;</span><br><span class="line">         	&lt;&#x2F;view&gt;</span><br><span class="line">            &lt;&#x2F;mp-slideview&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;				</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;submit_title&quot;&gt;</span><br><span class="line">	&lt;view class&#x3D;&quot;icon&quot;&gt;</span><br><span class="line">	    &lt;icon wx:if&#x3D;&quot;&#123;&#123;selectedAll&#125;&#125;&quot; type&#x3D;&quot;success&quot; size&#x3D;&quot;20&quot; color&#x3D;&quot;rgb(255,103,0)&quot; bindtap&#x3D;&quot;selectAll&quot; class&#x3D;&quot;i1&quot;&#x2F;&gt;</span><br><span class="line">	    &lt;icon wx:else type&#x3D;&quot;circle&quot; size&#x3D;&quot;20&quot; color&#x3D;&quot;rgb(255,103,0)&quot; bindtap&#x3D;&quot;selectAll&quot; class&#x3D;&quot;i1&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;view&gt;</span><br><span class="line">	&lt;text class&#x3D;&quot;all&quot;&gt;全选&lt;&#x2F;text&gt;</span><br><span class="line">	    &lt;view class&#x3D;&quot;allprice&quot;&gt;</span><br><span class="line">    	        &lt;text &gt;合计:&lt;&#x2F;text&gt;</span><br><span class="line">    	        &lt;text class&#x3D;&quot;totalprice&quot;&gt;　&#123;&#123;totalPrice&#125;&#125;元&lt;&#x2F;text&gt;</span><br><span class="line">	    &lt;&#x2F;view&gt;</span><br><span class="line">	    &lt;view class&#x3D;&quot;submit&quot;&gt;结算(&#123;&#123;totalNum&#125;&#125;)&lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;  </span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>判断商品是否选中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">selectList(e)&#123;</span><br><span class="line">  const index &#x3D; e.currentTarget.dataset.index;</span><br><span class="line">  let cart_list &#x3D; this.data.cart_list;</span><br><span class="line">  const selected &#x3D; cart_list[index].selected;</span><br><span class="line">  cart_list[index].selected &#x3D; !selected;</span><br><span class="line">  const symbol &#x3D; cart_list.some(cart &#x3D;&gt; &#123;</span><br><span class="line">    return cart.selected &#x3D;&#x3D;&#x3D; false;</span><br><span class="line">  &#125;);</span><br><span class="line">  if (symbol) &#123;</span><br><span class="line">    this.data.selectedAll &#x3D; false;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    this.data.selectedAll &#x3D; true;</span><br><span class="line">  &#125;</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    cart_list,</span><br><span class="line">    selectedAll: this.data.selectedAll</span><br><span class="line">  &#125;);</span><br><span class="line">  this.getTotalPrice();   &#x2F;&#x2F;状态改变，重新计算总价</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>计算商品总价和总数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">getTotalPrice()&#123;</span><br><span class="line">  let cart_list &#x3D; this.data.cart_list;                </span><br><span class="line">  let total &#x3D; 0,</span><br><span class="line">      num &#x3D; 0;</span><br><span class="line">  for(let i &#x3D; 0; i&lt;cart_list.length; i++) &#123;         </span><br><span class="line">      if(cart_list[i].selected) &#123;                   &#x2F;&#x2F; 判断选中才会计算价格</span><br><span class="line">          total &#x3D; total + cart_list[i].num * cart_list[i].price;</span><br><span class="line">          num &#x3D; num + parseInt(cart_list[i].num);     </span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  this.setData(&#123;                                </span><br><span class="line">    cart_list: cart_list,</span><br><span class="line">    totalPrice: total,</span><br><span class="line">    totalNum: num</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>判断商品是否全选</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">selectAll(e)&#123;</span><br><span class="line">  let selectedAll &#x3D; this.data.selectedAll;   </span><br><span class="line">  selectedAll &#x3D; !selectedAll;</span><br><span class="line">  let cart_list &#x3D; this.data.cart_list;</span><br><span class="line">  for (let i &#x3D; 0; i &lt; cart_list.length; i++) &#123;</span><br><span class="line">    cart_list[i].selected &#x3D; selectedAll;            &#x2F;&#x2F; 改变所有商品状态</span><br><span class="line">  &#125;</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">      selectedAll: selectedAll,</span><br><span class="line">      cart_list: cart_list</span><br><span class="line">  &#125;);</span><br><span class="line">  this.getTotalPrice();                               &#x2F;&#x2F; 重新获取总价</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除商品<br><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704dc4b03231471?w=360&h=638&f=gif&s=543965" alt="alt"></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">slideButtonTap(e)&#123;</span><br><span class="line">  const index&#x3D;e.currentTarget.dataset.index;</span><br><span class="line">  console.log(index);</span><br><span class="line">  this.data.cart_list.splice(index, 1);</span><br><span class="line">  wx.clearStorageSync(&quot;num&quot;);</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    cart_list: this.data.cart_list</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们使用的是左滑删除，微信官方文档提供了Slideview组件，可以点击<a href="https://developers.weixin.qq.com/miniprogram/dev/extended/weui/slideview.html" target="_blank" rel="noopener">这里</a>查看。</p>
+<h2 id="我的页面"><a href="#我的页面" class="headerlink" title="我的页面"></a>我的页面</h2><p><img src="https://user-gold-cdn.xitu.io/2020/2/16/1704dc53b94aff6f?w=378&h=669&f=png&s=34924" alt="alt"></p>
+<h3 id="页面解析-6"><a href="#页面解析-6" class="headerlink" title="页面解析"></a>页面解析</h3><p>这里我们只做简单的页面，头像和名字都是通过open-data来获取的微信头像和名字。这里大部分都是需要后台来做的，就没有过多的花费时间了。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>在写这个项目的时候碰到了许多的难题，每天都是在写bug和debug中度过。程序员的一天真的好真实，但是这也让我学习了很多，写代码一定要亲手尝试，这样才能更快的提升自己的能力。由于小米商城这个项目是在太大了，只做了部分主要功能。希望能给予他人一点帮助，如果文章中有错误或不妥之处，欢迎大家指正。这里是项目的<a href="https://github.com/1970186643/lesson_shuidi/tree/master/mini_program/MIshop" target="_blank" rel="noopener">地址</a>，如果觉得还不错的话，就star一下吧。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>滴滴一二面面经</title>
+    <url>/posts/didi.html</url>
+    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
+<li>自我介绍</li>
+<li>怎么学习的？</li>
+<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
+<li>介绍一下项目的技术栈有什么作用？</li>
+<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
+<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
+<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
+<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
+<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
+<li>一些状态码(301,302,400,500)</li>
+<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
+<li>this的指向问题，call，apply，bind分别有什么不同</li>
+</ol>
+<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
+<li>自我介绍</li>
+<li>介绍了下项目</li>
+<li>vue和React的区别</li>
+<li>微信小程序和H5开发的区别</li>
+<li>vue双向绑定的原理</li>
+<li>手写一个深拷贝</li>
+<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
+<li>项目中遇到的难点，详细介绍下</li>
+<li>平常怎么学习的？对以后的职业规划是什么？</li>
+<li>反问阶段</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象，原型及原型链</title>
+    <url>/posts/prototype.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
+<ul>
+<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
+问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
+</ul>
+<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
+<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
+<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
+<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
+<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>对象</category>
+        <category>原型链</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>原型继承</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React基础总结</title>
+    <url>/posts/react.html</url>
+    <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
+<li>constructor组件创建的时候第一个执行的函数<br>Fragment占位符 不需要在外层在包裹一个额外的div标签<br>react原则上不允许在最外层出现多个同级的标签，而在外面在包裹一层会显得多余，Fragment可以解决</li>
+</ul>
+<p>尽可能的往this.setState里传递一个函数而不是一个对象<br>this.setState是异步的，不要指望它会立即映射为新的值、<br>在事件处理函数是异步的，这样可以确保性能<br>往setState传递一个函数会保证里面的state为最新的</p>
+<ul>
+<li><p>Jquery直接操作DOM叫命令式的代码</p>
+</li>
+<li><p>React叫做声明式的开发，面向数据开发，组件化的开发, 视图层的框架</p>
+<ul>
+<li>函数式编程(一个个函数来组成的) -》 有利于自动化的测试，只要测试每一个函数的输入输出是否正确。</li>
+<li>视图层的框架 -》 react在大型框架的时候只能搭建成视图，必须辅以redux，mobx等来管理状态数据</li>
+<li>单向的数据流 -》 父组件向子组件的时候，不要在子组件里改变父组件的值，可以调用父组件的函数来修改父组件的值(TodoItem.js)</li>
+</ul>
+</li>
+<li><p>setState接受一个参数prevState，表示之前的状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.setState((prevState) &#x3D;&gt; (&#123;</span><br><span class="line">    &#x2F;&#x2F; [...arr] 扩展运算符，生成新数组，加入后面的心智inputvalue</span><br><span class="line">    list: [...prevState.list, prevState.inputValue],</span><br><span class="line">    inputValue: &#39;&#39;  &#x2F;&#x2F;清空输入框里的值      </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 PropTypes 进行类型检查</p>
+</li>
+<li><p>当一个组件的state或者props发生改变的时候的，render函数就会被重新执行</p>
+</li>
+</ul>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
+<li>Reat渲染流程(没有虚拟DOM的时候)</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板 结合，生成真实的DOM</li>
+<li>state 发生改变</li>
+<li>数据 + 模板 结合，生成真实的DOM，替换原始的DOM</li>
+</ol>
+<p>如果每次改变页面结构的时候都去改变DOM的时候，会非常消耗性能，</p>
+<ul>
+<li>有了虚拟DOM的时候</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板，生成虚拟DOM(虚拟DOM就是原生的JS对象，用来描述真实DOM)</li>
+<li>用虚拟DOM的结构，生成真实的DOM</li>
+<li>state 发生变化</li>
+<li>生成新的虚拟DOM(极大的提升了性能)</li>
+<li>比较原始虚拟DOM和新的虚拟DOM的区别，找到区别(diff算法)<!-- 这里比较的是JS对象，而不是用两个DOM进行比较，JS的比较性能远远提升 --></li>
+<li>操作DOM，改变数据<br>React.createElement(‘div’, {}, ‘item’)<br>JSX -&gt; 虚拟DOM(JS 对象) -&gt; 真实的DOM</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>性能提升了。</li>
+<li>它使得跨端应用得以实现。 React Native</li>
+</ol>
+<ul>
+<li><p>diff算法<br>原则是数据发生改变，虚拟DOM发生改变<br>会调用setState方法，这也就是为什么setState会是一个异步的方法。<br>如果有三次setState，就会把这三次改变合并起来，做一次改变。</p>
+</li>
+<li><p>同级比较的(同层虚拟DOM比较)<br>只比较一次，如果在第一层比较出差异，接下来的层数就不需要比较了，直接进行替换。</p>
+</li>
+<li><p>key值比对(虚拟DOM)</p>
+</li>
+</ul>
+<p>每个DOM节点都带有一个key，用对应的key进行相互的DON比较，也是diff算法的一部分</p>
+<!-- 这也是为什么尽量不要用index下标来作为key值，index下标一发生改变的时候，key值就会发生相应的改变，这会导致diff算法造成极大的困难。 -->
+<ul>
+<li>Ajax请求和API接口<br>尽量都放在componentDidMount里使用<br>因为这个函数只会调用一次，且没有任何副作用，其实放在componentWillMount和construcrot里也是可以的，但并不会保证无副作用</li>
+<li>react-transition-group react开源动画库<br>更好的使用react动画效果<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2>指某一个时刻组件会自动执行的函数<br><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?Expires=1588069542&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=AUYcbEJZUuo6BGv0gI%2BbkxF9gA4%3D" alt="alt"><h3 id="老版本的生命周期函数"><a href="#老版本的生命周期函数" class="headerlink" title="老版本的生命周期函数"></a>老版本的生命周期函数</h3></li>
+</ul>
+<ol>
+<li>initialization<br>在constructor里初始化的数据</li>
+<li>Mounting(componentWillMount -&gt; render -&gt; componentDidMount)</li>
+</ol>
+<ul>
+<li>componentWillMount  在组件挂载之前被执行</li>
+<li>render      渲染函数，挂载组件</li>
+<li>componentDidMount   在组件挂载之后被执行<br>注： 这两种都只是在组件第一次渲染的时候执行，数据的更新不会影响他们的变化</li>
+</ul>
+<ol start="3">
+<li>Updation 数据更新<ul>
+<li>对于state数据的更新<ol>
+<li>shouldComponentUpdate 组件更新之前发生，相当于询问你组件是否需要更新嘛？需要返回true or false<br>注：如果shouldComponentUpdate返回true，则执行componentWillUpdate 否则，接下来的生命周期都不会被执行</li>
+<li>componentWillUpdate  组件将要更新</li>
+<li>render 更新组件，渲染</li>
+<li>componentDidUpdate 组件更新完成</li>
+</ol>
+</li>
+<li>对于props的更新(多了第一步的componentWillReceiveProps的生命周期， 相当于询问子组件是否接受了参数，这个生命周期函数只对于子组件有效，放在顶层组件没有效果)<ol>
+<li>componentWillReceiveProps  相当于询问子组件是否接受了参数<br>产生条件：<br>一个组件要从父组件接受参数<br>只要父组件的render函数被重新执行，子组件的这个生命周期函数函数就会被执行<br>接下来的步骤同于state数据的更新</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Unmounting</li>
+</ol>
+<ul>
+<li>componentWillUnMount 在组件卸载及销毁之前直接调用</li>
+</ul>
+<h3 id="新版本的生命周期函数"><a href="#新版本的生命周期函数" class="headerlink" title="新版本的生命周期函数"></a>新版本的生命周期函数</h3><p><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%96%B0.png?Expires=1588087201&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=%2FMC3xLT54Pzgs%2BWj7FuaKosLzyw%3D" alt="alt"></p>
+<ul>
+<li>componentWillMount 和 componentWillReceiveProps将会被替换成<br>getDerivedStateFromProps函数<br>会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
+<li>react中绑定this指向时放在constructor里，保证绑定只会执行一次，不会做不必要的性能浪费</li>
+<li>setState函数有多个时，会被react进行异步的操作，放在一起进行操作，不会浪费性能。</li>
+<li>虚拟DOM的优化</li>
+<li>shouldComponentUpdate生命周期函数的使用，可以避免多余的render的浪费</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+        <category>react</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>redux</tag>
+        <tag>虚拟dom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this指向和call，apply， bind，new</title>
+    <url>/posts/this.html</url>
+    <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
+<ol>
+<li>函数作为对象的方法被调用时，this指向该对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'lin'</span>,</span><br><span class="line">  f1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.f1()</span><br></pre></td></tr></table></figure></li>
+<li>作为普通函数，this指向window(在严格模式会是undefined)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'lin'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></li>
+<li>构造器调用时，this指向返回的这个对象</li>
+<li>箭头函数的this绑定看的是this所在函数定义在哪个对象下，就绑定哪个对象,如果有嵌套的情况，则this绑定到最近的一层对象上</li>
+</ol>
+<ul>
+<li>箭头函数this指向的固定化，并不上它内部有绑定this，而是箭头函数根本没用自己的this，他总是用外部代码的this</li>
+</ul>
+<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><p>new &gt; call/apply/bind &gt; 对象.foo &gt; 全局</p>
+<ol>
+<li>使用es6的箭头函数</li>
+<li>用that = this，绑定之前的this指向</li>
+<li>使用apply call bind改变</li>
+<li>new的时候<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></li>
+<li>apply(接收的是一个包含多个参数的数组。)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.apply(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.apply(a,[<span class="number">1</span>,<span class="number">2</span>])     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
+<li>call(接受的是若干个参数列表)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.call(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.call(a,<span class="number">1</span>,<span class="number">2</span>)     <span class="comment">// 3    差别在这</span></span><br></pre></td></tr></table></figure></li>
+<li>bind返回的是一个新的函数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.bind(a)();  <span class="comment">//Cherry</span></span><br><span class="line">b.bind(a,<span class="number">1</span>,<span class="number">2</span>)()   <span class="comment">// 3  返回的是新函数，重新执行</span></span><br></pre></td></tr></table></figure></li>
+<li>new的过程<ol>
+<li>创建一个新对象</li>
+<li>把构造函数的作用域赋值给新对象，绑定this</li>
+<li>执行构造函数的代码(为这个新对象添加属性)</li>
+<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接直接返回该对象。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new1</span>(<span class="params">constructor, ...args</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;;  <span class="comment">//1.定义新对象</span></span><br><span class="line">  <span class="comment">// 2. 绑定this指向，构造函数的作用域付给新对象</span></span><br><span class="line">  target.prototype = <span class="keyword">constructor</span>.prototype;</span><br><span class="line">  // 3. 为这个新对象添加属性和方法</span><br><span class="line">  let result = <span class="keyword">constructor</span>.apply(target.prototype, args);</span><br><span class="line">  // 4. 返回这个新对象</span><br><span class="line">  if(result &amp;&amp; (typeof result == "object" || typeof result == "function"))&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数返回的结果是一个对象，就返回这个对象</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果构造函数返回的不是一个对象，就返回创建的新对象。</span></span><br><span class="line">  <span class="keyword">return</span> target.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>this指向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue之虚拟DOM(vdom)</title>
+    <url>/posts/vue-vdom.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>以下内容是个人的一些学习总结，如有不对，欢迎大佬指正。</p>
+</blockquote>
+<h2 id="一-真实DOM和渲染流程"><a href="#一-真实DOM和渲染流程" class="headerlink" title="一.真实DOM和渲染流程"></a>一.真实DOM和渲染流程</h2><p>在开始虚拟DOM之前，让我们先来了解一下真实的DOM以及浏览器是怎么进行解析的。浏览器渲染引擎工作流程大致分为以下四类：<strong>创建DOM树 -&gt; 生成render树 -&gt; 布局render树 -&gt; 绘制render树</strong></p>
+<ol>
+<li>创建DOM树：解析HTML生成DOM树 - 渲染引擎首先解析HTML文档，生成DOM树。 用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。</li>
+<li>生成render树：将DOM树和样式表，关联起来，构建一颗Render(渲染)树</li>
+<li>布局render树：有了Render树，浏览器开始对渲染树的每个节点进行布局处理，确定其在屏幕上的显示位置。</li>
+<li>绘制render树：遍历渲染树并用UI后端层将每一个节点绘制出来<br><img src="https://user-gold-cdn.xitu.io/2020/3/7/170b3fde842e595e?w=624&h=289&f=jpeg&s=18227" alt="alt"></li>
+</ol>
+<h2 id="二-虚拟DOM"><a href="#二-虚拟DOM" class="headerlink" title="二.虚拟DOM"></a>二.虚拟DOM</h2><h3 id="1-虚拟DOM是什么？"><a href="#1-虚拟DOM是什么？" class="headerlink" title="1.虚拟DOM是什么？"></a>1.虚拟DOM是什么？</h3><p>当用原生js或者jq去操作真实DOM的时候，浏览器会从构建DOM树开始从头到尾执行一遍流程。当操作次数过多时，之前计算DOM节点坐标值等都是白白浪费的性能，虚拟DOM由此诞生。</p>
+<h3 id="2-虚拟DOM有什么好处？"><a href="#2-虚拟DOM有什么好处？" class="headerlink" title="2.虚拟DOM有什么好处？"></a>2.虚拟DOM有什么好处？</h3><p>假设一次操作中有10次更新DOM的动作，虚拟DOM不会立即操作DOM，而是将这10次更新的diff内容保存到本地一个JS对象中，最终将这个JS对象一次性attch到DOM树上，再进行后续操作，避免大量无谓的计算量。所以，用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在虚拟DOM上，操作内存中的JS对象的速度显然要更快，等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。</p>
+<h2 id="三-Vue中的虚拟DOM"><a href="#三-Vue中的虚拟DOM" class="headerlink" title="三.Vue中的虚拟DOM"></a>三.Vue中的虚拟DOM</h2><p><img src="https://user-gold-cdn.xitu.io/2020/3/7/170b414d73437744?w=949&h=269&f=png&s=23906" alt="alt"></p>
+<ul>
+<li><strong>渲染函数</strong>：渲染函数是用来生成虚拟DOM的。Vue推荐使用模板来构建应用界面，在底层实现中Vue将模板编译成渲染函数。</li>
+<li><strong>Vnode虚拟节点</strong>：它可以代表一个真实的dom节点。通过createElement方法将vnode节点渲染成dom节点。</li>
+<li><strong>patch</strong>：虚拟DOM最核心的部分，它可以将vnode渲染成真实的DOM，这个过程是对比新旧虚拟节点之间有哪些不同，然后根据对比结果找出需要更新的的节点进行更新</li>
+</ul>
+<blockquote>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://cn.vuejs.org/v2/guide/render-function.html" target="_blank" rel="noopener">渲染函数Vue文档</a></li>
+<li><a href="https://blog.csdn.net/u010692018/article/details/78799335" target="_blank" rel="noopener">vue 虚拟dom实现原理文章</a></li>
+<li><a href="https://github.com/vuejs/vue/blob/dev/src/core/vdom/patch.js#L366-L366" target="_blank" rel="noopener">patch算法源码</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>ps: 笔者能力有限，原谅我patch源码篇看的不是很懂！在这请尤雨溪大大收下我的膝盖。</p>
+</blockquote>
+<h2 id="四-模拟Vue虚拟DOM"><a href="#四-模拟Vue虚拟DOM" class="headerlink" title="四.模拟Vue虚拟DOM"></a>四.模拟Vue虚拟DOM</h2><h3 id="1-安装vue-cli脚手架，部署vue环境。"><a href="#1-安装vue-cli脚手架，部署vue环境。" class="headerlink" title="1.安装vue-cli脚手架，部署vue环境。"></a>1.安装vue-cli脚手架，部署vue环境。</h3><p>这里大家可以自行安装。</p>
+<h3 id="2-创建虚拟DOM树"><a href="#2-创建虚拟DOM树" class="headerlink" title="2.创建虚拟DOM树"></a>2.创建虚拟DOM树</h3><p>先在element.js文件中实现如何创建虚拟DOM树。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; element.js</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 虚拟DOM元素类，用来描述DOM</span><br><span class="line">function Element(type, props, children)&#123;</span><br><span class="line">  this.type &#x3D; type; &#x2F;&#x2F;节点类型</span><br><span class="line">  this.props &#x3D; props; &#x2F;&#x2F;属性</span><br><span class="line">  this.children &#x3D; children; &#x2F;&#x2F;子节点</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 创建虚拟DOM</span><br><span class="line">function createElement(type, props, children)&#123;</span><br><span class="line">  return new Element(type, props, children);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;向外输出</span><br><span class="line">export &#123;</span><br><span class="line">  Element,</span><br><span class="line">  createElement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们来到App.vue文件中调用createElement方法来创建一个DOM对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;App.vue</span><br><span class="line">import &#123;createElement&#125; from &#39;.&#x2F;js&#x2F;element.js&#39;</span><br><span class="line"></span><br><span class="line">let V_DOM &#x3D; createElement(&#39;ul&#39;,&#123;class:&#39;list&#39;&#125;,[</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item1&#39;]),</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item2&#39;]),</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item3&#39;])</span><br><span class="line">])</span><br><span class="line">&#x2F;&#x2F;打印虚拟DOM</span><br><span class="line">console.log(V_DOM);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：因为脚手架里的App.vue的内容没有删除，这里只贴了调用到的代码。</p>
+</blockquote>
+<p>下面我们来看看浏览器里打印出来的虚拟DOM。<br><img src="https://user-gold-cdn.xitu.io/2020/3/7/170b4a7e341625dc?w=465&h=402&f=png&s=25638" alt="alt"></p>
+<h3 id="三-模拟渲染函数渲染虚拟DOM"><a href="#三-模拟渲染函数渲染虚拟DOM" class="headerlink" title="三.模拟渲染函数渲染虚拟DOM"></a>三.模拟渲染函数渲染虚拟DOM</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; element.js</span><br><span class="line"></span><br><span class="line">function render(dom) &#123;</span><br><span class="line">  &#x2F;&#x2F; 根据type类型来创建对应的元素</span><br><span class="line">  let el &#x3D; document.createElement(dom.type);</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 再去遍历props属性对象，然后给创建的元素el设置属性</span><br><span class="line">  for (let key in dom.props) &#123;</span><br><span class="line">      &#x2F;&#x2F; 设置属性的方法</span><br><span class="line">      el.setAttribute(key, dom.props[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 遍历子节点</span><br><span class="line">  &#x2F;&#x2F; &#x2F;&#x2F; 如果子节点也是虚拟DOM，递归构建DOM节点</span><br><span class="line">  &#x2F;&#x2F; 不是就代表是文本节点，直接创建</span><br><span class="line">  dom.children.forEach(child &#x3D;&gt; &#123;</span><br><span class="line">      child &#x3D; (child instanceof Element) ? render(child) : document.createTextNode(child);</span><br><span class="line">      &#x2F;&#x2F; 添加到对应元素内</span><br><span class="line">      el.appendChild(child);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  return el;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;向外输出</span><br><span class="line">export &#123;</span><br><span class="line">  Element,</span><br><span class="line">  createElement,</span><br><span class="line">  render,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>回到App.vue我们来调用<strong>render函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123;createElement, render, renderDom&#125; from &#39;.&#x2F;js&#x2F;element.js&#39;</span><br><span class="line"></span><br><span class="line">let V_DOM &#x3D; createElement(&#39;ul&#39;,&#123;class:&#39;list&#39;&#125;,[</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item1&#39;]),</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item2&#39;]),</span><br><span class="line">  createElement(&#39;li&#39;, &#123;class:&#39;item&#39;&#125;,[&#39;item3&#39;])</span><br><span class="line">])</span><br><span class="line">&#x2F;&#x2F;打印虚拟DOM</span><br><span class="line">console.log(V_DOM);</span><br><span class="line">var el &#x3D; render(V_DOM);</span><br><span class="line">console.log(el);</span><br><span class="line">document.body.appendChild(el);</span><br></pre></td></tr></table></figure>
+<p>来看看效果图。<br><img src="https://user-gold-cdn.xitu.io/2020/3/7/170b4d7b39a06321?w=479&h=198&f=png&s=12226" alt="alt"><br>真实的DOM结构就构建出来了，接下来渲染到页面中。<br><img src="https://user-gold-cdn.xitu.io/2020/3/7/170b4dacd16bede6?w=1433&h=968&f=png&s=64205" alt="alt"><br>好了，我们已经实现了模拟虚拟DOM并进行了渲染。而diff算法和patch算法才是虚拟DOM最核心的部分，笔者还在努力学习阶段。这里推荐一篇<a href="https://github.com/livoras/blog/issues/13" target="_blank" rel="noopener">宝藏文章</a>，这里比较详细的解析了虚拟DOM算法。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>如果文章有错误或者不妥之处，欢迎大家指正，谢谢。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>虚拟dom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节跳动一面凉经</title>
+    <url>/posts/zijie.html</url>
+    <content><![CDATA[<h2 id="字节跳动一面凉经"><a href="#字节跳动一面凉经" class="headerlink" title="字节跳动一面凉经"></a>字节跳动一面凉经</h2><p>面试官人超级好，一直在引导我，可能是因为第一次面试吧，还是不可避免的紧张了，错过了机会，但是要吸取教训，继续加油吧。</p>
+<ol>
+<li>做自我介绍<br>尽量介绍往自己会的部分靠</li>
+<li>说说看了什么书？<br>我说了小黄书，语言精粹，图解HTTP，后面就追问了小黄书上的，因为紧张我居然连构造函数和类都没答上来…</li>
+<li>commonJS和AMD/CMD语言规范<br>这块答得也不好，哭唧唧，太菜了</li>
+<li>为什么会有Vue，React这种框架，没有了他们就不能编程了吗？<br>其实面试就是和面试官聊天式的，你不会他会向你解释，然后继续下一个话题，都是带有引导式的，面试是最能检验自己能力的</li>
+<li>vue和react的脚手架是怎么搭建的，为什么我们可以直接就能写.vue或者.jsx文件就能直接在网页显示？<br>我就扯了下webpack打包编译的过程..感觉还是不太好</li>
+<li>js里面有类吗？js里的类是通过什么继承的？<br>我说了extends。。然后他说extends是es6的语法，那在之前那些老前辈是怎么实现继承的…然后不会了。。。</li>
+<li>this指向的问题<br>还是没答好…前面崩了，这里就慌了</li>
+<li>== 和 ===的问题</li>
+<li>js怎么判断是不是字符串<br>我傻了吧唧的说了isString…受到前几天看的判断是否为数组isArray，我就以为有这个方法..</li>
+<li>js事件循环</li>
+<li>宏任务和微任务<br>最后两个都还行。。</li>
+<li>一个编程题<br>[1, 3, 2][3, 4, 5, 6, 7, 8, 9]<br>转化成<br>[1, 2, 3, 3, 4, 5, 6, 7, 8, 9]</li>
+</ol>
+<p>面试官叫我讲下思路，我说了插入排序，因为有一半是已经排好序的，然后问我能不能优化一下，插入排序是两个for的<br>我就说加一个判断条件..满足条件了就不需要接下来的比较了</p>
+<p>ps: 面试心态还是要放好，真的真的心态很重要，不用因为一道题不会就接着接下来的题都崩了，面试官都是不错的,<br>加油整理心态继续学习。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+</search>
