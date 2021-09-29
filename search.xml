@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>政采云一面面经</title>
+    <url>/posts/ZCY.html</url>
+    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
+<ol>
+<li>自我介绍</li>
+<li>问了好多简单的(很容易被忽略的题目)</li>
+<li>html有哪些表单标签。</li>
+<li>html有哪些标题标签，</li>
+</ol>
+<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>百度一二面经</title>
+    <url>/posts/baidu.html</url>
+    <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
+<ol>
+<li><p>算法：去除一个数组中的全部0.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] !==  <span class="number">0</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果不用新数组怎么处理</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let newArr = [];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] === <span class="number">0</span>) &#123;</span><br><span class="line">      arr.splice(i, <span class="number">1</span>);</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果在增加去除字符串0呢，和空字符串呢？<br>开始没想起来，后面面试官提示了我看你是用”===”来判断的，知道”===”和”==”的区别吗?<br>后来就想起来了，不能用”===”，用”==”就可以了，就可以判断空字符串和”==”这些了</p>
+</li>
+<li><p>算法：一个长度为100的数组，里面是0 - 100的随机数，用一个新数组统计出里面的0-9的数，提示: 99是两个9,也要统计出两个9<br>一开始没听清面试官的题目，只是统计了0-9的数。后面有改了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  开始数组乱序都不知道怎么写了，还问了面试官，尴尬</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  arr.push(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() *<span class="number">100</span>))</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">num</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> big = <span class="number">0</span>, small = <span class="number">0</span>; <span class="comment">//整数部分，和个位数</span></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(item &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      newArr[item]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      small = item % <span class="number">10</span>;</span><br><span class="line">      big = (item - small) / <span class="number">10</span>;</span><br><span class="line">      newArr[small]++;</span><br><span class="line">      newArr[big]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>冒泡知道吗？讲一下，事件委托知道吗？实现一个</p>
+</li>
+</ol>
+<p>。。。 手写代码<br>4. 实现垂直居中的办法<br>5. 上下两列布局，下面高度为40px，上面自适应<br>6. 说说vue的虚拟DOM，以及优缺点<br>7. 看你之前博客写过手动生成虚拟DOM的，用一个构造函数来实现下。</p>
+<ul>
+<li>我忘记了，写的有点时间长了，后面就和面试官说了一些步骤<ol start="8">
+<li>反问阶段 </li>
+</ol>
+</li>
+</ul>
+<h2 id="百度二面-挂-1-5h"><a href="#百度二面-挂-1-5h" class="headerlink" title="百度二面(挂) 1.5h"></a>百度二面(挂) 1.5h</h2><ol>
+<li>自我介绍</li>
+<li>介绍项目以及难点</li>
+<li>es6的箭头函数，参数问题</li>
+<li>聊了下跨域以及项目中的跨域</li>
+<li>问了我axios的一些知识，以及手写axios<ul>
+<li>没写出来</li>
+</ul>
+</li>
+<li>aa-bb-cc变成AaBbCc用函数实现下<ul>
+<li>写出来了但是后面优化不会</li>
+</ul>
+</li>
+<li>异步编程的一些问题</li>
+<li>反问阶段</li>
+</ol>
+<p>最后还是挂了，有点可惜/(ㄒoㄒ)/~~</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>介绍下 Set、Map、WeakSet 和 WeakMap 的区别？</title>
     <url>/posts/Set-Map.html</url>
     <content><![CDATA[<h2 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h2><p>Set 和 Map 主要的应用场景在于 数据重组 和 数据储存<br>Set 是一种叫做<strong>集合的数据结构</strong>，Map 是一种叫做<strong>字典的数据结构</strong></p>
@@ -172,76 +242,6 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
         <tag>javascript</tag>
         <tag>es6</tag>
         <tag>数组去重</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>百度一二面经</title>
-    <url>/posts/baidu.html</url>
-    <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
-<ol>
-<li><p>算法：去除一个数组中的全部0.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] !==  <span class="number">0</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>追问：如果不用新数组怎么处理</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let newArr = [];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] === <span class="number">0</span>) &#123;</span><br><span class="line">      arr.splice(i, <span class="number">1</span>);</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>追问：如果在增加去除字符串0呢，和空字符串呢？<br>开始没想起来，后面面试官提示了我看你是用”===”来判断的，知道”===”和”==”的区别吗?<br>后来就想起来了，不能用”===”，用”==”就可以了，就可以判断空字符串和”==”这些了</p>
-</li>
-<li><p>算法：一个长度为100的数组，里面是0 - 100的随机数，用一个新数组统计出里面的0-9的数，提示: 99是两个9,也要统计出两个9<br>一开始没听清面试官的题目，只是统计了0-9的数。后面有改了</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  开始数组乱序都不知道怎么写了，还问了面试官，尴尬</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  arr.push(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() *<span class="number">100</span>))</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">num</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> big = <span class="number">0</span>, small = <span class="number">0</span>; <span class="comment">//整数部分，和个位数</span></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(item &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      newArr[item]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      small = item % <span class="number">10</span>;</span><br><span class="line">      big = (item - small) / <span class="number">10</span>;</span><br><span class="line">      newArr[small]++;</span><br><span class="line">      newArr[big]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>冒泡知道吗？讲一下，事件委托知道吗？实现一个</p>
-</li>
-</ol>
-<p>。。。 手写代码<br>4. 实现垂直居中的办法<br>5. 上下两列布局，下面高度为40px，上面自适应<br>6. 说说vue的虚拟DOM，以及优缺点<br>7. 看你之前博客写过手动生成虚拟DOM的，用一个构造函数来实现下。</p>
-<ul>
-<li>我忘记了，写的有点时间长了，后面就和面试官说了一些步骤<ol start="8">
-<li>反问阶段 </li>
-</ol>
-</li>
-</ul>
-<h2 id="百度二面-挂-1-5h"><a href="#百度二面-挂-1-5h" class="headerlink" title="百度二面(挂) 1.5h"></a>百度二面(挂) 1.5h</h2><ol>
-<li>自我介绍</li>
-<li>介绍项目以及难点</li>
-<li>es6的箭头函数，参数问题</li>
-<li>聊了下跨域以及项目中的跨域</li>
-<li>问了我axios的一些知识，以及手写axios<ul>
-<li>没写出来</li>
-</ul>
-</li>
-<li>aa-bb-cc变成AaBbCc用函数实现下<ul>
-<li>写出来了但是后面优化不会</li>
-</ul>
-</li>
-<li>异步编程的一些问题</li>
-<li>反问阶段</li>
-</ol>
-<p>最后还是挂了，有点可惜/(ㄒoㄒ)/~~</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>政采云一面面经</title>
-    <url>/posts/ZCY.html</url>
-    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
-<ol>
-<li>自我介绍</li>
-<li>问了好多简单的(很容易被忽略的题目)</li>
-<li>html有哪些表单标签。</li>
-<li>html有哪些标题标签，</li>
-</ol>
-<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -459,6 +459,44 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
+    <title>滴滴一二面面经</title>
+    <url>/posts/didi.html</url>
+    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
+<li>自我介绍</li>
+<li>怎么学习的？</li>
+<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
+<li>介绍一下项目的技术栈有什么作用？</li>
+<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
+<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
+<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
+<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
+<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
+<li>一些状态码(301,302,400,500)</li>
+<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
+<li>this的指向问题，call，apply，bind分别有什么不同</li>
+</ol>
+<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
+<li>自我介绍</li>
+<li>介绍了下项目</li>
+<li>vue和React的区别</li>
+<li>微信小程序和H5开发的区别</li>
+<li>vue双向绑定的原理</li>
+<li>手写一个深拷贝</li>
+<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
+<li>项目中遇到的难点，详细介绍下</li>
+<li>平常怎么学习的？对以后的职业规划是什么？</li>
+<li>反问阶段</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序：仿小米商城</title>
     <url>/posts/miShop.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>微信小程序作为一款耳熟能详的应用，相信大家或多或少都已经有过这方面的接触了。作为一名刚接触前端不久的小白，手写一款小程序是很好的对知识的一次巩固。下面让我们来开始小程序的开发吧。</p>
@@ -600,75 +638,6 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>滴滴一二面面经</title>
-    <url>/posts/didi.html</url>
-    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
-<li>自我介绍</li>
-<li>怎么学习的？</li>
-<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
-<li>介绍一下项目的技术栈有什么作用？</li>
-<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
-<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
-<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
-<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
-<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
-<li>一些状态码(301,302,400,500)</li>
-<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
-<li>this的指向问题，call，apply，bind分别有什么不同</li>
-</ol>
-<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
-<li>自我介绍</li>
-<li>介绍了下项目</li>
-<li>vue和React的区别</li>
-<li>微信小程序和H5开发的区别</li>
-<li>vue双向绑定的原理</li>
-<li>手写一个深拷贝</li>
-<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
-<li>项目中遇到的难点，详细介绍下</li>
-<li>平常怎么学习的？对以后的职业规划是什么？</li>
-<li>反问阶段</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对象，原型及原型链</title>
-    <url>/posts/prototype.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
-<ul>
-<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
-问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
-</ul>
-<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
-<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
-<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
-<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
-<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
-<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>对象</category>
-        <category>原型链</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-        <tag>原型继承</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React基础总结</title>
     <url>/posts/react.html</url>
     <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
@@ -788,43 +757,34 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>this指向和call，apply， bind，new</title>
-    <url>/posts/this.html</url>
-    <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
-<ol>
-<li>函数作为对象的方法被调用时，this指向该对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'lin'</span>,</span><br><span class="line">  f1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.f1()</span><br></pre></td></tr></table></figure></li>
-<li>作为普通函数，this指向window(在严格模式会是undefined)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'lin'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></li>
-<li>构造器调用时，this指向返回的这个对象</li>
-<li>箭头函数的this绑定看的是this所在函数定义在哪个对象下，就绑定哪个对象,如果有嵌套的情况，则this绑定到最近的一层对象上</li>
-</ol>
+    <title>对象，原型及原型链</title>
+    <url>/posts/prototype.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
 <ul>
-<li>箭头函数this指向的固定化，并不上它内部有绑定this，而是箭头函数根本没用自己的this，他总是用外部代码的this</li>
+<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
+问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
 </ul>
-<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><p>new &gt; call/apply/bind &gt; 对象.foo &gt; 全局</p>
-<ol>
-<li>使用es6的箭头函数</li>
-<li>用that = this，绑定之前的this指向</li>
-<li>使用apply call bind改变</li>
-<li>new的时候<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></li>
-<li>apply(接收的是一个包含多个参数的数组。)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.apply(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.apply(a,[<span class="number">1</span>,<span class="number">2</span>])     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
-<li>call(接受的是若干个参数列表)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.call(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.call(a,<span class="number">1</span>,<span class="number">2</span>)     <span class="comment">// 3    差别在这</span></span><br></pre></td></tr></table></figure></li>
-<li>bind返回的是一个新的函数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.bind(a)();  <span class="comment">//Cherry</span></span><br><span class="line">b.bind(a,<span class="number">1</span>,<span class="number">2</span>)()   <span class="comment">// 3  返回的是新函数，重新执行</span></span><br></pre></td></tr></table></figure></li>
-<li>new的过程<ol>
-<li>创建一个新对象</li>
-<li>把构造函数的作用域赋值给新对象，绑定this</li>
-<li>执行构造函数的代码(为这个新对象添加属性)</li>
-<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接直接返回该对象。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new1</span>(<span class="params">constructor, ...args</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;;  <span class="comment">//1.定义新对象</span></span><br><span class="line">  <span class="comment">// 2. 绑定this指向，构造函数的作用域付给新对象</span></span><br><span class="line">  target.prototype = <span class="keyword">constructor</span>.prototype;</span><br><span class="line">  // 3. 为这个新对象添加属性和方法</span><br><span class="line">  let result = <span class="keyword">constructor</span>.apply(target.prototype, args);</span><br><span class="line">  // 4. 返回这个新对象</span><br><span class="line">  if(result &amp;&amp; (typeof result == "object" || typeof result == "function"))&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数返回的结果是一个对象，就返回这个对象</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果构造函数返回的不是一个对象，就返回创建的新对象。</span></span><br><span class="line">  <span class="keyword">return</span> target.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
+<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
+<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
+<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
+<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
+<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
 ]]></content>
       <categories>
         <category>技术</category>
-        <category>javascript</category>
+        <category>对象</category>
+        <category>原型链</category>
       </categories>
       <tags>
         <tag>javascript</tag>
-        <tag>this指向</tag>
+        <tag>原型继承</tag>
       </tags>
   </entry>
   <entry>
@@ -883,6 +843,46 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       <tags>
         <tag>javascript</tag>
         <tag>虚拟dom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this指向和call，apply， bind，new</title>
+    <url>/posts/this.html</url>
+    <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
+<ol>
+<li>函数作为对象的方法被调用时，this指向该对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'lin'</span>,</span><br><span class="line">  f1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.f1()</span><br></pre></td></tr></table></figure></li>
+<li>作为普通函数，this指向window(在严格模式会是undefined)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'lin'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></li>
+<li>构造器调用时，this指向返回的这个对象</li>
+<li>箭头函数的this绑定看的是this所在函数定义在哪个对象下，就绑定哪个对象,如果有嵌套的情况，则this绑定到最近的一层对象上</li>
+</ol>
+<ul>
+<li>箭头函数this指向的固定化，并不上它内部有绑定this，而是箭头函数根本没用自己的this，他总是用外部代码的this</li>
+</ul>
+<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><p>new &gt; call/apply/bind &gt; 对象.foo &gt; 全局</p>
+<ol>
+<li>使用es6的箭头函数</li>
+<li>用that = this，绑定之前的this指向</li>
+<li>使用apply call bind改变</li>
+<li>new的时候<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></li>
+<li>apply(接收的是一个包含多个参数的数组。)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.apply(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.apply(a,[<span class="number">1</span>,<span class="number">2</span>])     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
+<li>call(接受的是若干个参数列表)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.call(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.call(a,<span class="number">1</span>,<span class="number">2</span>)     <span class="comment">// 3    差别在这</span></span><br></pre></td></tr></table></figure></li>
+<li>bind返回的是一个新的函数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.bind(a)();  <span class="comment">//Cherry</span></span><br><span class="line">b.bind(a,<span class="number">1</span>,<span class="number">2</span>)()   <span class="comment">// 3  返回的是新函数，重新执行</span></span><br></pre></td></tr></table></figure></li>
+<li>new的过程<ol>
+<li>创建一个新对象</li>
+<li>把构造函数的作用域赋值给新对象，绑定this</li>
+<li>执行构造函数的代码(为这个新对象添加属性)</li>
+<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接直接返回该对象。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new1</span>(<span class="params">constructor, ...args</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;;  <span class="comment">//1.定义新对象</span></span><br><span class="line">  <span class="comment">// 2. 绑定this指向，构造函数的作用域付给新对象</span></span><br><span class="line">  target.prototype = <span class="keyword">constructor</span>.prototype;</span><br><span class="line">  // 3. 为这个新对象添加属性和方法</span><br><span class="line">  let result = <span class="keyword">constructor</span>.apply(target.prototype, args);</span><br><span class="line">  // 4. 返回这个新对象</span><br><span class="line">  if(result &amp;&amp; (typeof result == "object" || typeof result == "function"))&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数返回的结果是一个对象，就返回这个对象</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果构造函数返回的不是一个对象，就返回创建的新对象。</span></span><br><span class="line">  <span class="keyword">return</span> target.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>this指向</tag>
       </tags>
   </entry>
   <entry>
