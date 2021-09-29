@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>政采云一面面经</title>
-    <url>/posts/ZCY.html</url>
-    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
-<ol>
-<li>自我介绍</li>
-<li>问了好多简单的(很容易被忽略的题目)</li>
-<li>html有哪些表单标签。</li>
-<li>html有哪些标题标签，</li>
-</ol>
-<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>百度一二面经</title>
     <url>/posts/baidu.html</url>
     <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
@@ -245,6 +225,26 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
+    <title>政采云一面面经</title>
+    <url>/posts/ZCY.html</url>
+    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
+<ol>
+<li>自我介绍</li>
+<li>问了好多简单的(很容易被忽略的题目)</li>
+<li>html有哪些表单标签。</li>
+<li>html有哪些标题标签，</li>
+</ol>
+<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>能不能说下前端缓存？</title>
     <url>/posts/cache.html</url>
     <content><![CDATA[<p>浏览器的缓存机制：强缓存和协商缓存</p>
@@ -421,6 +421,75 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
+    <title>滴滴一二面面经</title>
+    <url>/posts/didi.html</url>
+    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
+<li>自我介绍</li>
+<li>怎么学习的？</li>
+<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
+<li>介绍一下项目的技术栈有什么作用？</li>
+<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
+<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
+<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
+<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
+<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
+<li>一些状态码(301,302,400,500)</li>
+<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
+<li>this的指向问题，call，apply，bind分别有什么不同</li>
+</ol>
+<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
+<li>自我介绍</li>
+<li>介绍了下项目</li>
+<li>vue和React的区别</li>
+<li>微信小程序和H5开发的区别</li>
+<li>vue双向绑定的原理</li>
+<li>手写一个深拷贝</li>
+<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
+<li>项目中遇到的难点，详细介绍下</li>
+<li>平常怎么学习的？对以后的职业规划是什么？</li>
+<li>反问阶段</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象，原型及原型链</title>
+    <url>/posts/prototype.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
+<ul>
+<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
+问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
+</ul>
+<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
+<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
+<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
+<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
+<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>对象</category>
+        <category>原型链</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>原型继承</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>快手一二面面经</title>
     <url>/posts/kuaishou.html</url>
     <content><![CDATA[<h2 id="快手一面-效率工程"><a href="#快手一面-效率工程" class="headerlink" title="快手一面(效率工程)"></a>快手一面(效率工程)</h2><ol>
@@ -459,41 +528,122 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>滴滴一二面面经</title>
-    <url>/posts/didi.html</url>
-    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
-<li>自我介绍</li>
-<li>怎么学习的？</li>
-<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
-<li>介绍一下项目的技术栈有什么作用？</li>
-<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
-<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
-<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
-<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
-<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
-<li>一些状态码(301,302,400,500)</li>
-<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
-<li>this的指向问题，call，apply，bind分别有什么不同</li>
+    <title>React基础总结</title>
+    <url>/posts/react.html</url>
+    <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
+<li>constructor组件创建的时候第一个执行的函数<br>Fragment占位符 不需要在外层在包裹一个额外的div标签<br>react原则上不允许在最外层出现多个同级的标签，而在外面在包裹一层会显得多余，Fragment可以解决</li>
+</ul>
+<p>尽可能的往this.setState里传递一个函数而不是一个对象<br>this.setState是异步的，不要指望它会立即映射为新的值、<br>在事件处理函数是异步的，这样可以确保性能<br>往setState传递一个函数会保证里面的state为最新的</p>
+<ul>
+<li><p>Jquery直接操作DOM叫命令式的代码</p>
+</li>
+<li><p>React叫做声明式的开发，面向数据开发，组件化的开发, 视图层的框架</p>
+<ul>
+<li>函数式编程(一个个函数来组成的) -》 有利于自动化的测试，只要测试每一个函数的输入输出是否正确。</li>
+<li>视图层的框架 -》 react在大型框架的时候只能搭建成视图，必须辅以redux，mobx等来管理状态数据</li>
+<li>单向的数据流 -》 父组件向子组件的时候，不要在子组件里改变父组件的值，可以调用父组件的函数来修改父组件的值(TodoItem.js)</li>
+</ul>
+</li>
+<li><p>setState接受一个参数prevState，表示之前的状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.setState((prevState) &#x3D;&gt; (&#123;</span><br><span class="line">    &#x2F;&#x2F; [...arr] 扩展运算符，生成新数组，加入后面的心智inputvalue</span><br><span class="line">    list: [...prevState.list, prevState.inputValue],</span><br><span class="line">    inputValue: &#39;&#39;  &#x2F;&#x2F;清空输入框里的值      </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 PropTypes 进行类型检查</p>
+</li>
+<li><p>当一个组件的state或者props发生改变的时候的，render函数就会被重新执行</p>
+</li>
+</ul>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
+<li>Reat渲染流程(没有虚拟DOM的时候)</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板 结合，生成真实的DOM</li>
+<li>state 发生改变</li>
+<li>数据 + 模板 结合，生成真实的DOM，替换原始的DOM</li>
 </ol>
-<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
-<li>自我介绍</li>
-<li>介绍了下项目</li>
-<li>vue和React的区别</li>
-<li>微信小程序和H5开发的区别</li>
-<li>vue双向绑定的原理</li>
-<li>手写一个深拷贝</li>
-<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
-<li>项目中遇到的难点，详细介绍下</li>
-<li>平常怎么学习的？对以后的职业规划是什么？</li>
-<li>反问阶段</li>
+<p>如果每次改变页面结构的时候都去改变DOM的时候，会非常消耗性能，</p>
+<ul>
+<li>有了虚拟DOM的时候</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板，生成虚拟DOM(虚拟DOM就是原生的JS对象，用来描述真实DOM)</li>
+<li>用虚拟DOM的结构，生成真实的DOM</li>
+<li>state 发生变化</li>
+<li>生成新的虚拟DOM(极大的提升了性能)</li>
+<li>比较原始虚拟DOM和新的虚拟DOM的区别，找到区别(diff算法)<!-- 这里比较的是JS对象，而不是用两个DOM进行比较，JS的比较性能远远提升 --></li>
+<li>操作DOM，改变数据<br>React.createElement(‘div’, {}, ‘item’)<br>JSX -&gt; 虚拟DOM(JS 对象) -&gt; 真实的DOM</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>性能提升了。</li>
+<li>它使得跨端应用得以实现。 React Native</li>
+</ol>
+<ul>
+<li><p>diff算法<br>原则是数据发生改变，虚拟DOM发生改变<br>会调用setState方法，这也就是为什么setState会是一个异步的方法。<br>如果有三次setState，就会把这三次改变合并起来，做一次改变。</p>
+</li>
+<li><p>同级比较的(同层虚拟DOM比较)<br>只比较一次，如果在第一层比较出差异，接下来的层数就不需要比较了，直接进行替换。</p>
+</li>
+<li><p>key值比对(虚拟DOM)</p>
+</li>
+</ul>
+<p>每个DOM节点都带有一个key，用对应的key进行相互的DON比较，也是diff算法的一部分</p>
+<!-- 这也是为什么尽量不要用index下标来作为key值，index下标一发生改变的时候，key值就会发生相应的改变，这会导致diff算法造成极大的困难。 -->
+<ul>
+<li>Ajax请求和API接口<br>尽量都放在componentDidMount里使用<br>因为这个函数只会调用一次，且没有任何副作用，其实放在componentWillMount和construcrot里也是可以的，但并不会保证无副作用</li>
+<li>react-transition-group react开源动画库<br>更好的使用react动画效果<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2>指某一个时刻组件会自动执行的函数<br><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?Expires=1588069542&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=AUYcbEJZUuo6BGv0gI%2BbkxF9gA4%3D" alt="alt"><h3 id="老版本的生命周期函数"><a href="#老版本的生命周期函数" class="headerlink" title="老版本的生命周期函数"></a>老版本的生命周期函数</h3></li>
+</ul>
+<ol>
+<li>initialization<br>在constructor里初始化的数据</li>
+<li>Mounting(componentWillMount -&gt; render -&gt; componentDidMount)</li>
+</ol>
+<ul>
+<li>componentWillMount  在组件挂载之前被执行</li>
+<li>render      渲染函数，挂载组件</li>
+<li>componentDidMount   在组件挂载之后被执行<br>注： 这两种都只是在组件第一次渲染的时候执行，数据的更新不会影响他们的变化</li>
+</ul>
+<ol start="3">
+<li>Updation 数据更新<ul>
+<li>对于state数据的更新<ol>
+<li>shouldComponentUpdate 组件更新之前发生，相当于询问你组件是否需要更新嘛？需要返回true or false<br>注：如果shouldComponentUpdate返回true，则执行componentWillUpdate 否则，接下来的生命周期都不会被执行</li>
+<li>componentWillUpdate  组件将要更新</li>
+<li>render 更新组件，渲染</li>
+<li>componentDidUpdate 组件更新完成</li>
+</ol>
+</li>
+<li>对于props的更新(多了第一步的componentWillReceiveProps的生命周期， 相当于询问子组件是否接受了参数，这个生命周期函数只对于子组件有效，放在顶层组件没有效果)<ol>
+<li>componentWillReceiveProps  相当于询问子组件是否接受了参数<br>产生条件：<br>一个组件要从父组件接受参数<br>只要父组件的render函数被重新执行，子组件的这个生命周期函数函数就会被执行<br>接下来的步骤同于state数据的更新</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Unmounting</li>
+</ol>
+<ul>
+<li>componentWillUnMount 在组件卸载及销毁之前直接调用</li>
+</ul>
+<h3 id="新版本的生命周期函数"><a href="#新版本的生命周期函数" class="headerlink" title="新版本的生命周期函数"></a>新版本的生命周期函数</h3><p><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%96%B0.png?Expires=1588087201&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=%2FMC3xLT54Pzgs%2BWj7FuaKosLzyw%3D" alt="alt"></p>
+<ul>
+<li>componentWillMount 和 componentWillReceiveProps将会被替换成<br>getDerivedStateFromProps函数<br>会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
+<li>react中绑定this指向时放在constructor里，保证绑定只会执行一次，不会做不必要的性能浪费</li>
+<li>setState函数有多个时，会被react进行异步的操作，放在一起进行操作，不会浪费性能。</li>
+<li>虚拟DOM的优化</li>
+<li>shouldComponentUpdate生命周期函数的使用，可以避免多余的render的浪费</li>
 </ol>
 ]]></content>
       <categories>
         <category>技术</category>
-        <category>面试</category>
+        <category>javascript</category>
+        <category>react</category>
       </categories>
       <tags>
-        <tag>面试</tag>
+        <tag>react</tag>
+        <tag>redux</tag>
+        <tag>虚拟dom</tag>
       </tags>
   </entry>
   <entry>
@@ -638,153 +788,43 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>React基础总结</title>
-    <url>/posts/react.html</url>
-    <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
-<li>constructor组件创建的时候第一个执行的函数<br>Fragment占位符 不需要在外层在包裹一个额外的div标签<br>react原则上不允许在最外层出现多个同级的标签，而在外面在包裹一层会显得多余，Fragment可以解决</li>
-</ul>
-<p>尽可能的往this.setState里传递一个函数而不是一个对象<br>this.setState是异步的，不要指望它会立即映射为新的值、<br>在事件处理函数是异步的，这样可以确保性能<br>往setState传递一个函数会保证里面的state为最新的</p>
-<ul>
-<li><p>Jquery直接操作DOM叫命令式的代码</p>
-</li>
-<li><p>React叫做声明式的开发，面向数据开发，组件化的开发, 视图层的框架</p>
-<ul>
-<li>函数式编程(一个个函数来组成的) -》 有利于自动化的测试，只要测试每一个函数的输入输出是否正确。</li>
-<li>视图层的框架 -》 react在大型框架的时候只能搭建成视图，必须辅以redux，mobx等来管理状态数据</li>
-<li>单向的数据流 -》 父组件向子组件的时候，不要在子组件里改变父组件的值，可以调用父组件的函数来修改父组件的值(TodoItem.js)</li>
-</ul>
-</li>
-<li><p>setState接受一个参数prevState，表示之前的状态</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.setState((prevState) &#x3D;&gt; (&#123;</span><br><span class="line">    &#x2F;&#x2F; [...arr] 扩展运算符，生成新数组，加入后面的心智inputvalue</span><br><span class="line">    list: [...prevState.list, prevState.inputValue],</span><br><span class="line">    inputValue: &#39;&#39;  &#x2F;&#x2F;清空输入框里的值      </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 PropTypes 进行类型检查</p>
-</li>
-<li><p>当一个组件的state或者props发生改变的时候的，render函数就会被重新执行</p>
-</li>
-</ul>
-<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
-<li>Reat渲染流程(没有虚拟DOM的时候)</li>
-</ul>
+    <title>this指向和call，apply， bind，new</title>
+    <url>/posts/this.html</url>
+    <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
 <ol>
-<li>state数据</li>
-<li>JSX模板</li>
-<li>数据 + 模板 结合，生成真实的DOM</li>
-<li>state 发生改变</li>
-<li>数据 + 模板 结合，生成真实的DOM，替换原始的DOM</li>
+<li>函数作为对象的方法被调用时，this指向该对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'lin'</span>,</span><br><span class="line">  f1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.f1()</span><br></pre></td></tr></table></figure></li>
+<li>作为普通函数，this指向window(在严格模式会是undefined)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'lin'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></li>
+<li>构造器调用时，this指向返回的这个对象</li>
+<li>箭头函数的this绑定看的是this所在函数定义在哪个对象下，就绑定哪个对象,如果有嵌套的情况，则this绑定到最近的一层对象上</li>
 </ol>
-<p>如果每次改变页面结构的时候都去改变DOM的时候，会非常消耗性能，</p>
 <ul>
-<li>有了虚拟DOM的时候</li>
+<li>箭头函数this指向的固定化，并不上它内部有绑定this，而是箭头函数根本没用自己的this，他总是用外部代码的this</li>
 </ul>
+<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><p>new &gt; call/apply/bind &gt; 对象.foo &gt; 全局</p>
 <ol>
-<li>state数据</li>
-<li>JSX模板</li>
-<li>数据 + 模板，生成虚拟DOM(虚拟DOM就是原生的JS对象，用来描述真实DOM)</li>
-<li>用虚拟DOM的结构，生成真实的DOM</li>
-<li>state 发生变化</li>
-<li>生成新的虚拟DOM(极大的提升了性能)</li>
-<li>比较原始虚拟DOM和新的虚拟DOM的区别，找到区别(diff算法)<!-- 这里比较的是JS对象，而不是用两个DOM进行比较，JS的比较性能远远提升 --></li>
-<li>操作DOM，改变数据<br>React.createElement(‘div’, {}, ‘item’)<br>JSX -&gt; 虚拟DOM(JS 对象) -&gt; 真实的DOM</li>
-</ol>
-<p>优点：</p>
-<ol>
-<li>性能提升了。</li>
-<li>它使得跨端应用得以实现。 React Native</li>
-</ol>
-<ul>
-<li><p>diff算法<br>原则是数据发生改变，虚拟DOM发生改变<br>会调用setState方法，这也就是为什么setState会是一个异步的方法。<br>如果有三次setState，就会把这三次改变合并起来，做一次改变。</p>
-</li>
-<li><p>同级比较的(同层虚拟DOM比较)<br>只比较一次，如果在第一层比较出差异，接下来的层数就不需要比较了，直接进行替换。</p>
-</li>
-<li><p>key值比对(虚拟DOM)</p>
-</li>
-</ul>
-<p>每个DOM节点都带有一个key，用对应的key进行相互的DON比较，也是diff算法的一部分</p>
-<!-- 这也是为什么尽量不要用index下标来作为key值，index下标一发生改变的时候，key值就会发生相应的改变，这会导致diff算法造成极大的困难。 -->
-<ul>
-<li>Ajax请求和API接口<br>尽量都放在componentDidMount里使用<br>因为这个函数只会调用一次，且没有任何副作用，其实放在componentWillMount和construcrot里也是可以的，但并不会保证无副作用</li>
-<li>react-transition-group react开源动画库<br>更好的使用react动画效果<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2>指某一个时刻组件会自动执行的函数<br><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?Expires=1588069542&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=AUYcbEJZUuo6BGv0gI%2BbkxF9gA4%3D" alt="alt"><h3 id="老版本的生命周期函数"><a href="#老版本的生命周期函数" class="headerlink" title="老版本的生命周期函数"></a>老版本的生命周期函数</h3></li>
-</ul>
-<ol>
-<li>initialization<br>在constructor里初始化的数据</li>
-<li>Mounting(componentWillMount -&gt; render -&gt; componentDidMount)</li>
-</ol>
-<ul>
-<li>componentWillMount  在组件挂载之前被执行</li>
-<li>render      渲染函数，挂载组件</li>
-<li>componentDidMount   在组件挂载之后被执行<br>注： 这两种都只是在组件第一次渲染的时候执行，数据的更新不会影响他们的变化</li>
-</ul>
-<ol start="3">
-<li>Updation 数据更新<ul>
-<li>对于state数据的更新<ol>
-<li>shouldComponentUpdate 组件更新之前发生，相当于询问你组件是否需要更新嘛？需要返回true or false<br>注：如果shouldComponentUpdate返回true，则执行componentWillUpdate 否则，接下来的生命周期都不会被执行</li>
-<li>componentWillUpdate  组件将要更新</li>
-<li>render 更新组件，渲染</li>
-<li>componentDidUpdate 组件更新完成</li>
+<li>使用es6的箭头函数</li>
+<li>用that = this，绑定之前的this指向</li>
+<li>使用apply call bind改变</li>
+<li>new的时候<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></li>
+<li>apply(接收的是一个包含多个参数的数组。)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.apply(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.apply(a,[<span class="number">1</span>,<span class="number">2</span>])     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
+<li>call(接受的是若干个参数列表)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.call(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.call(a,<span class="number">1</span>,<span class="number">2</span>)     <span class="comment">// 3    差别在这</span></span><br></pre></td></tr></table></figure></li>
+<li>bind返回的是一个新的函数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.bind(a)();  <span class="comment">//Cherry</span></span><br><span class="line">b.bind(a,<span class="number">1</span>,<span class="number">2</span>)()   <span class="comment">// 3  返回的是新函数，重新执行</span></span><br></pre></td></tr></table></figure></li>
+<li>new的过程<ol>
+<li>创建一个新对象</li>
+<li>把构造函数的作用域赋值给新对象，绑定this</li>
+<li>执行构造函数的代码(为这个新对象添加属性)</li>
+<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接直接返回该对象。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new1</span>(<span class="params">constructor, ...args</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;;  <span class="comment">//1.定义新对象</span></span><br><span class="line">  <span class="comment">// 2. 绑定this指向，构造函数的作用域付给新对象</span></span><br><span class="line">  target.prototype = <span class="keyword">constructor</span>.prototype;</span><br><span class="line">  // 3. 为这个新对象添加属性和方法</span><br><span class="line">  let result = <span class="keyword">constructor</span>.apply(target.prototype, args);</span><br><span class="line">  // 4. 返回这个新对象</span><br><span class="line">  if(result &amp;&amp; (typeof result == "object" || typeof result == "function"))&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数返回的结果是一个对象，就返回这个对象</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果构造函数返回的不是一个对象，就返回创建的新对象。</span></span><br><span class="line">  <span class="keyword">return</span> target.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
-<li>对于props的更新(多了第一步的componentWillReceiveProps的生命周期， 相当于询问子组件是否接受了参数，这个生命周期函数只对于子组件有效，放在顶层组件没有效果)<ol>
-<li>componentWillReceiveProps  相当于询问子组件是否接受了参数<br>产生条件：<br>一个组件要从父组件接受参数<br>只要父组件的render函数被重新执行，子组件的这个生命周期函数函数就会被执行<br>接下来的步骤同于state数据的更新</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Unmounting</li>
-</ol>
-<ul>
-<li>componentWillUnMount 在组件卸载及销毁之前直接调用</li>
-</ul>
-<h3 id="新版本的生命周期函数"><a href="#新版本的生命周期函数" class="headerlink" title="新版本的生命周期函数"></a>新版本的生命周期函数</h3><p><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%96%B0.png?Expires=1588087201&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=%2FMC3xLT54Pzgs%2BWj7FuaKosLzyw%3D" alt="alt"></p>
-<ul>
-<li>componentWillMount 和 componentWillReceiveProps将会被替换成<br>getDerivedStateFromProps函数<br>会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用</li>
-</ul>
-<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
-<li>react中绑定this指向时放在constructor里，保证绑定只会执行一次，不会做不必要的性能浪费</li>
-<li>setState函数有多个时，会被react进行异步的操作，放在一起进行操作，不会浪费性能。</li>
-<li>虚拟DOM的优化</li>
-<li>shouldComponentUpdate生命周期函数的使用，可以避免多余的render的浪费</li>
 </ol>
 ]]></content>
       <categories>
         <category>技术</category>
         <category>javascript</category>
-        <category>react</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-        <tag>redux</tag>
-        <tag>虚拟dom</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对象，原型及原型链</title>
-    <url>/posts/prototype.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
-<ul>
-<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
-问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
-</ul>
-<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
-<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
-<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
-<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
-<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
-<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>对象</category>
-        <category>原型链</category>
       </categories>
       <tags>
         <tag>javascript</tag>
-        <tag>原型继承</tag>
+        <tag>this指向</tag>
       </tags>
   </entry>
   <entry>
@@ -843,46 +883,6 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       <tags>
         <tag>javascript</tag>
         <tag>虚拟dom</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>this指向和call，apply， bind，new</title>
-    <url>/posts/this.html</url>
-    <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
-<ol>
-<li>函数作为对象的方法被调用时，this指向该对象<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'lin'</span>,</span><br><span class="line">  f1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.f1()</span><br></pre></td></tr></table></figure></li>
-<li>作为普通函数，this指向window(在严格模式会是undefined)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'lin'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br></pre></td></tr></table></figure></li>
-<li>构造器调用时，this指向返回的这个对象</li>
-<li>箭头函数的this绑定看的是this所在函数定义在哪个对象下，就绑定哪个对象,如果有嵌套的情况，则this绑定到最近的一层对象上</li>
-</ol>
-<ul>
-<li>箭头函数this指向的固定化，并不上它内部有绑定this，而是箭头函数根本没用自己的this，他总是用外部代码的this</li>
-</ul>
-<h2 id="改变this指向"><a href="#改变this指向" class="headerlink" title="改变this指向"></a>改变this指向</h2><p>new &gt; call/apply/bind &gt; 对象.foo &gt; 全局</p>
-<ol>
-<li>使用es6的箭头函数</li>
-<li>用that = this，绑定之前的this指向</li>
-<li>使用apply call bind改变</li>
-<li>new的时候<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3></li>
-<li>apply(接收的是一个包含多个参数的数组。)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.apply(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.apply(a,[<span class="number">1</span>,<span class="number">2</span>])     <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
-<li>call(接受的是若干个参数列表)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.call(a);  <span class="comment">//Cherry</span></span><br><span class="line">b.call(a,<span class="number">1</span>,<span class="number">2</span>)     <span class="comment">// 3    差别在这</span></span><br></pre></td></tr></table></figure></li>
-<li>bind返回的是一个新的函数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a =&#123;</span><br><span class="line">  name : <span class="string">"Cherry"</span>,</span><br><span class="line">  fn : <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a + b)</span><br><span class="line">  &#125;,</span><br><span class="line">  fn1 : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a.fn;</span><br><span class="line"><span class="keyword">var</span> b1 = a.fn1;</span><br><span class="line">b1.bind(a)();  <span class="comment">//Cherry</span></span><br><span class="line">b.bind(a,<span class="number">1</span>,<span class="number">2</span>)()   <span class="comment">// 3  返回的是新函数，重新执行</span></span><br></pre></td></tr></table></figure></li>
-<li>new的过程<ol>
-<li>创建一个新对象</li>
-<li>把构造函数的作用域赋值给新对象，绑定this</li>
-<li>执行构造函数的代码(为这个新对象添加属性)</li>
-<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接直接返回该对象。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new1</span>(<span class="params">constructor, ...args</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;;  <span class="comment">//1.定义新对象</span></span><br><span class="line">  <span class="comment">// 2. 绑定this指向，构造函数的作用域付给新对象</span></span><br><span class="line">  target.prototype = <span class="keyword">constructor</span>.prototype;</span><br><span class="line">  // 3. 为这个新对象添加属性和方法</span><br><span class="line">  let result = <span class="keyword">constructor</span>.apply(target.prototype, args);</span><br><span class="line">  // 4. 返回这个新对象</span><br><span class="line">  if(result &amp;&amp; (typeof result == "object" || typeof result == "function"))&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数返回的结果是一个对象，就返回这个对象</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果构造函数返回的不是一个对象，就返回创建的新对象。</span></span><br><span class="line">  <span class="keyword">return</span> target.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-        <tag>this指向</tag>
       </tags>
   </entry>
   <entry>
