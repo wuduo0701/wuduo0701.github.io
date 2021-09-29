@@ -262,9 +262,9 @@
     
     <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    <category term="前端性能" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
-    
     <category term="HTTP" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/HTTP/"/>
+    
+    <category term="前端性能" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
     
     
     <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>

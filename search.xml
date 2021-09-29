@@ -1,46 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>百度一二面经</title>
-    <url>/posts/baidu.html</url>
-    <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
+    <title>政采云一面面经</title>
+    <url>/posts/ZCY.html</url>
+    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
 <ol>
-<li><p>算法：去除一个数组中的全部0.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] !==  <span class="number">0</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>追问：如果不用新数组怎么处理</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let newArr = [];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] === <span class="number">0</span>) &#123;</span><br><span class="line">      arr.splice(i, <span class="number">1</span>);</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>追问：如果在增加去除字符串0呢，和空字符串呢？<br>开始没想起来，后面面试官提示了我看你是用”===”来判断的，知道”===”和”==”的区别吗?<br>后来就想起来了，不能用”===”，用”==”就可以了，就可以判断空字符串和”==”这些了</p>
-</li>
-<li><p>算法：一个长度为100的数组，里面是0 - 100的随机数，用一个新数组统计出里面的0-9的数，提示: 99是两个9,也要统计出两个9<br>一开始没听清面试官的题目，只是统计了0-9的数。后面有改了</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  开始数组乱序都不知道怎么写了，还问了面试官，尴尬</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  arr.push(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() *<span class="number">100</span>))</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">num</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> big = <span class="number">0</span>, small = <span class="number">0</span>; <span class="comment">//整数部分，和个位数</span></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(item &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      newArr[item]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      small = item % <span class="number">10</span>;</span><br><span class="line">      big = (item - small) / <span class="number">10</span>;</span><br><span class="line">      newArr[small]++;</span><br><span class="line">      newArr[big]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>冒泡知道吗？讲一下，事件委托知道吗？实现一个</p>
-</li>
-</ol>
-<p>。。。 手写代码<br>4. 实现垂直居中的办法<br>5. 上下两列布局，下面高度为40px，上面自适应<br>6. 说说vue的虚拟DOM，以及优缺点<br>7. 看你之前博客写过手动生成虚拟DOM的，用一个构造函数来实现下。</p>
-<ul>
-<li>我忘记了，写的有点时间长了，后面就和面试官说了一些步骤<ol start="8">
-<li>反问阶段 </li>
-</ol>
-</li>
-</ul>
-<h2 id="百度二面-挂-1-5h"><a href="#百度二面-挂-1-5h" class="headerlink" title="百度二面(挂) 1.5h"></a>百度二面(挂) 1.5h</h2><ol>
 <li>自我介绍</li>
-<li>介绍项目以及难点</li>
-<li>es6的箭头函数，参数问题</li>
-<li>聊了下跨域以及项目中的跨域</li>
-<li>问了我axios的一些知识，以及手写axios<ul>
-<li>没写出来</li>
-</ul>
-</li>
-<li>aa-bb-cc变成AaBbCc用函数实现下<ul>
-<li>写出来了但是后面优化不会</li>
-</ul>
-</li>
-<li>异步编程的一些问题</li>
-<li>反问阶段</li>
+<li>问了好多简单的(很容易被忽略的题目)</li>
+<li>html有哪些表单标签。</li>
+<li>html有哪些标题标签，</li>
 </ol>
-<p>最后还是挂了，有点可惜/(ㄒoㄒ)/~~</p>
+<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -225,16 +195,46 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>政采云一面面经</title>
-    <url>/posts/ZCY.html</url>
-    <content><![CDATA[<h2 id="政采云一面面经"><a href="#政采云一面面经" class="headerlink" title="政采云一面面经"></a>政采云一面面经</h2><p>面试过程感觉不太愉快，好几次没听清面试官的问题</p>
+    <title>百度一二面经</title>
+    <url>/posts/baidu.html</url>
+    <content><![CDATA[<h2 id="百度一面-1h"><a href="#百度一面-1h" class="headerlink" title="百度一面 1h"></a>百度一面 1h</h2><p>几乎全程在手写算法…</p>
 <ol>
-<li>自我介绍</li>
-<li>问了好多简单的(很容易被忽略的题目)</li>
-<li>html有哪些表单标签。</li>
-<li>html有哪些标题标签，</li>
+<li><p>算法：去除一个数组中的全部0.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] !==  <span class="number">0</span>) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果不用新数组怎么处理</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteZero</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// let newArr = [];</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] === <span class="number">0</span>) &#123;</span><br><span class="line">      arr.splice(i, <span class="number">1</span>);</span><br><span class="line">      i--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>追问：如果在增加去除字符串0呢，和空字符串呢？<br>开始没想起来，后面面试官提示了我看你是用”===”来判断的，知道”===”和”==”的区别吗?<br>后来就想起来了，不能用”===”，用”==”就可以了，就可以判断空字符串和”==”这些了</p>
+</li>
+<li><p>算法：一个长度为100的数组，里面是0 - 100的随机数，用一个新数组统计出里面的0-9的数，提示: 99是两个9,也要统计出两个9<br>一开始没听清面试官的题目，只是统计了0-9的数。后面有改了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  开始数组乱序都不知道怎么写了，还问了面试官，尴尬</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  arr.push(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() *<span class="number">100</span>))</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">num</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>: <span class="number">10</span>&#125;).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> big = <span class="number">0</span>, small = <span class="number">0</span>; <span class="comment">//整数部分，和个位数</span></span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(item &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      newArr[item]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      small = item % <span class="number">10</span>;</span><br><span class="line">      big = (item - small) / <span class="number">10</span>;</span><br><span class="line">      newArr[small]++;</span><br><span class="line">      newArr[big]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>冒泡知道吗？讲一下，事件委托知道吗？实现一个</p>
+</li>
 </ol>
-<p><strong>业务场景</strong>：有一个电商网站，你一般用哪一级标签作为层级的标题<br>5. css有哪些伪类元素(多记几个，至少要记6个左右)<br><strong>业务场景</strong>：有好几段文字，我都想要每一行设置两个空格，我该怎么使用before这个伪元素<br>6. css选择器以及css选择器优先级<br>7. css标准盒子模型和cssIE盒子模型<br>  padding上下20px左右10px如何表示，上10px下20px左右30px怎么表示<br>追问：有一个width=400px的，他是代表盒子模型的哪一些部分<br><strong>业务场景</strong>：有一段文字，他是向上的，我们该如何让他居中。<br>8. 问我Vue和React哪一个更侧重一点。我说了Vue<br>9. Vue的生命周期<br>10. 业务题：设置一个60s的倒计时。让他每一秒减一。<br>答出来了，问还有什么优化吗？不清除定时器吗，页面跳转后定时器不清除吗<br>11. 了解vuex吗？都有哪些模块，说下具体作用<br>12. 业务题：有一个按钮，点击后会异步加载出来用户的数据，vue和vuex经历了哪些步骤，具体描述出来<br>13. 我看你用过ajax，知道ajax的拦截器吗？(好像是拦截器，有点忘记了)<br>  没答出来<br>14. ajax有哪些具体的方法<br>15. 了解浏览器的Storage吗？ 我说了localStorage和sessionStorage<br>16. localStorage和sessionStorage的区别<br>又问了他俩的通信方式，sessionStorage在两个标签页能进行数据共享吗？一些他们的使用方法，还有安全问题等，问的很细<br>18. 问了一些git的操作，有具体的业务场景，建议多了解下。<br>17. 有什么要问的？<br>他的二面好像是现场面试的。</p>
+<p>。。。 手写代码<br>4. 实现垂直居中的办法<br>5. 上下两列布局，下面高度为40px，上面自适应<br>6. 说说vue的虚拟DOM，以及优缺点<br>7. 看你之前博客写过手动生成虚拟DOM的，用一个构造函数来实现下。</p>
+<ul>
+<li>我忘记了，写的有点时间长了，后面就和面试官说了一些步骤<ol start="8">
+<li>反问阶段 </li>
+</ol>
+</li>
+</ul>
+<h2 id="百度二面-挂-1-5h"><a href="#百度二面-挂-1-5h" class="headerlink" title="百度二面(挂) 1.5h"></a>百度二面(挂) 1.5h</h2><ol>
+<li>自我介绍</li>
+<li>介绍项目以及难点</li>
+<li>es6的箭头函数，参数问题</li>
+<li>聊了下跨域以及项目中的跨域</li>
+<li>问了我axios的一些知识，以及手写axios<ul>
+<li>没写出来</li>
+</ul>
+</li>
+<li>aa-bb-cc变成AaBbCc用函数实现下<ul>
+<li>写出来了但是后面优化不会</li>
+</ul>
+</li>
+<li>异步编程的一些问题</li>
+<li>反问阶段</li>
+</ol>
+<p>最后还是挂了，有点可惜/(ㄒoㄒ)/~~</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -245,85 +245,41 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>能不能说下前端缓存？</title>
-    <url>/posts/cache.html</url>
-    <content><![CDATA[<p>浏览器的缓存机制：强缓存和协商缓存</p>
-<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>浏览器的缓存作用分为两种情况，一种是需要发送HTTP请求的，一种是不需要发送的。</p>
-<ol>
-<li>不需要发送HTTP请求的<br>首先是检查强缓存，这个阶段是不需要发送HTTP请求的。<br>问题&amp;Q: 如何检查强缓存呢?<br>回答&amp;A: 通过检查相应的字段。<ul>
-<li>在HTTP/1.0中，检查的是Expires</li>
-<li>在HTTP/1.1中，检查的是Cache-control</li>
-</ul>
-</li>
+    <title>滴滴一二面面经</title>
+    <url>/posts/didi.html</url>
+    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
+<li>自我介绍</li>
+<li>怎么学习的？</li>
+<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
+<li>介绍一下项目的技术栈有什么作用？</li>
+<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
+<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
+<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
+<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
+<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
+<li>一些状态码(301,302,400,500)</li>
+<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
+<li>this的指向问题，call，apply，bind分别有什么不同</li>
 </ol>
-<h4 id="Expires-过期时间"><a href="#Expires-过期时间" class="headerlink" title="Expires  过期时间"></a>Expires  过期时间</h4><p>存在于服务器中的返回头中，告诉浏览器在这个过期时间端内可以直接从缓存获取数据</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Expires: Wed, <span class="number">22</span> Nov <span class="number">2019</span> <span class="number">08</span>:<span class="number">41</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
-
-<p>缺点：服务器的时间和浏览器的时间可能不一致，那返回的时间就是不准确的了。因此在HTTP/1.1被抛弃了</p>
-<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>这个用来控制的不是具体的时间点，而是采用过期时长来控制缓存，对应的缓存应该是max-age</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Cache-Control:max-age=<span class="number">3600</span></span><br></pre></td></tr></table></figure>
-<p>public:  浏览器经过到达源服务器的中间任意缓存服务器都可以缓存<br>private： 这种情况就是只有浏览器能缓存了，中间的代理服务器不能缓存。<br>no-cache: 跳过当前的强缓存，发送HTTP请求，即直接进入协商缓存阶段。<br>no-store：非常粗暴，不进行任何形式的缓存。<br>s-maxage：这和max-age长得比较像，但是区别在于s-maxage是针对代理服务器的缓存时间。<br>must-revalidate: 是缓存就会有过期的时候，加上这个字段一旦缓存过期，就必须回到源服务器验证。</p>
-<p>❗ 注意：值得注意的是，当Expires和Cache-Control同时存在的时候，Cache-Control会优先考虑。</p>
-<p>当缓存时间都超时了，这时候就需要到协商缓存。</p>
-<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>强缓存失效后，浏览器在请求头中携带 <strong>缓存tag</strong> 相应的缓存服务器发送请求，由服务器根据这个tag，来决定是否使用缓存，这就是协商缓存。</p>
-<p>协商缓存分为两种：Last-Modified 和 ETag</p>
-<h4 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h4><p>即资源的最终的修改时间。浏览器第一次给服务器发送请求后，服务器会在请求投中加上这个字段。</p>
-<p>了解这个还需要了解另外一个字段：<strong>If-Modified-Since</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">If-Modified-Since:  Thu, <span class="number">15</span> Apr <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
-<p>表示是在2004.4.15更新后的时间</p>
-<p>此时如果 <strong>Last-Modified</strong> 字段为</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Last-Modified:  Sun, <span class="number">29</span> Aug <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
-<p>表示资源的最后的修改时间为：2004.8.29</p>
-<ul>
-<li>总结：<br>如果<strong>If-Modified-Since</strong>的时间小于<strong>Last-Modified</strong>的时间，表示是时候更新了<br>否则直接返回304状态码， 告诉浏览器直接用缓存</li>
-</ul>
-<h4 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h4><p>将资源(文件)以字符串的形式给文件生成唯一标识，当资源发生改变时，这个值就会改变。</p>
-<p>在此之前还需要了解另外一个字段: <strong>If-None-Match</strong></p>
-<p>浏览器在收到ETag的值时，会在下次请求时会将这个值作为If-None-Match这个字段的内容，然后会与服务器上的ETag值进行对比。</p>
-<ul>
-<li>如果不一样时，说明资源更新了，需要返回新的资源，然后需要发送新的http请求获取最新资源</li>
-<li>一样时，返回状态码304，告诉浏览器直接用缓存</li>
-</ul>
-<h3 id="Last-Modified-与-ETag-对比"><a href="#Last-Modified-与-ETag-对比" class="headerlink" title="Last-Modified 与 ETag 对比"></a>Last-Modified 与 ETag 对比</h3><ol>
-<li><p>在精度上。<br>ETag优于Last-Modified.因为ETag时按照内容给资源上标识，因此能准确感知资源的变化。Last-Modified在一些特殊的情况并不能准确感知资源变化。</p>
-<ul>
-<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
-<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
-</ul>
-</li>
-<li><p>在性能上。<br>Last-Modified优于ETag，也很好理解，Last-Modified仅仅只是记录一个时间点，而Etag需要根据文件的具体内容生成哈希值。</p>
-</li>
+<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
+<li>自我介绍</li>
+<li>介绍了下项目</li>
+<li>vue和React的区别</li>
+<li>微信小程序和H5开发的区别</li>
+<li>vue双向绑定的原理</li>
+<li>手写一个深拷贝</li>
+<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
+<li>项目中遇到的难点，详细介绍下</li>
+<li>平常怎么学习的？对以后的职业规划是什么？</li>
+<li>反问阶段</li>
 </ol>
-<p>❗ 注意：如果两种方式都支持的话，服务器会优先考虑ETag。</p>
-<h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><p>当Last-Modified 或者 ETag返回304状态时，我们需要从缓存中拿去资源，可是缓存的资源放在哪呢？<br>浏览器中的缓存位置一共有四种，按优先级从高到低排列分别是：</p>
-<ul>
-<li>Service Worker</li>
-<li>Memory Cache</li>
-<li>Disk Cache</li>
-<li>Push Cache</li>
-</ul>
-<h4 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h4><p>Service Worker是PWA的重要实现机制。</p>
-<ul>
-<li>原理<br>让 JS 运行在主线程之外，由于它脱离了浏览器的窗体，因此无法直接访问DOM</li>
-<li>用法<br>官方的React框架的时候会生成一个serveice-worker.js。他在离线缓存、消息推送和网络代理等起到了很大的作用</li>
-</ul>
-<h4 id="Memory-Cache-和-Disk-Cache"><a href="#Memory-Cache-和-Disk-Cache" class="headerlink" title="Memory Cache 和 Disk Cache"></a>Memory Cache 和 Disk Cache</h4><p>即内存缓存和磁盘缓存<br>效率上Memory Cache比Disk Cache快。存储容量和存储时长Disk Cache更有优势。</p>
-<h4 id="Push-Cache"><a href="#Push-Cache" class="headerlink" title="Push Cache"></a>Push Cache</h4><p>即推送缓存，这是浏览器缓存的最后一道防线。它是 HTTP/2 中的内容，虽然现在应用的并不广泛，但随着 HTTP/2 的推广，它的应用越来越广泛。</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>浏览器的缓存机制：首先会对Cache-cache或者Expires字段进行检查(这里Expires就不进行考虑了，因为他是Http1.0，已经被淘汰)，判断有无强缓存，如果强缓存可以用，就直接使用，否则就进入协商缓存阶段。<br>在协商缓存中，浏览器会发送http请求，服务器会通过请求头中的If-Modified-Since与Last-Modified字段或者If-None-Match与ETag字段进行比较，判断资源是否更新。</p>
-<ul>
-<li>若资源更新，则返回新的资源和状态码200</li>
-<li>否则，返回状态304，告诉浏览器直接从缓存中获取。</li>
-</ul>
 ]]></content>
       <categories>
         <category>技术</category>
-        <category>前端性能</category>
-        <category>HTTP</category>
+        <category>面试</category>
       </categories>
       <tags>
-        <tag>HTTP</tag>
-        <tag>缓存</tag>
-        <tag>前端性能</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -421,75 +377,6 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>滴滴一二面面经</title>
-    <url>/posts/didi.html</url>
-    <content><![CDATA[<h2 id="杭州滴滴一面面经-38min"><a href="#杭州滴滴一面面经-38min" class="headerlink" title="杭州滴滴一面面经 38min"></a>杭州滴滴一面面经 38min</h2><ol>
-<li>自我介绍</li>
-<li>怎么学习的？</li>
-<li>学习里学过前端知识吗?问了我专业，然后问我为什么选择前端</li>
-<li>介绍一下项目的技术栈有什么作用？</li>
-<li>vue和react有什么区别？相同点，异同点。<br>上面说了vue和react都有虚拟DOM，然后问了我虚拟DOM有什么优点，怎么实现虚拟DOM的</li>
-<li>let和const，var的区别,具体介绍了变量提升，块级作用域，作用域等<br>了解过es6的promise吗？在之前是怎么解决异步的，然后又问了异步怎么实现串行，并行的。</li>
-<li>了解过跨域吗？说说具体的流程。<br>具体说了jsonp和cros，问的很细，建议学的清楚点。还说了postmessage和nginx，说了解不多。</li>
-<li>聊聊cookie，我就说了cookie和session，这里我又说了浏览器的缓存，勾引面试官往下问<br>这里面试官详细问了cookie和session是怎么保存用户的登入状态的。</li>
-<li>浏览器的缓存机制<br>强缓存和协商缓存</li>
-<li>一些状态码(301,302,400,500)</li>
-<li>介绍下css的盒子模型，三列布局，以及BFC，怎么会引起BFC。</li>
-<li>this的指向问题，call，apply，bind分别有什么不同</li>
-</ol>
-<h2 id="二面-有些题目记不清了"><a href="#二面-有些题目记不清了" class="headerlink" title="二面(有些题目记不清了)"></a>二面(有些题目记不清了)</h2><ol>
-<li>自我介绍</li>
-<li>介绍了下项目</li>
-<li>vue和React的区别</li>
-<li>微信小程序和H5开发的区别</li>
-<li>vue双向绑定的原理</li>
-<li>手写一个深拷贝</li>
-<li>在项目中学习了哪些？现在对框架有了哪些更深的认识</li>
-<li>项目中遇到的难点，详细介绍下</li>
-<li>平常怎么学习的？对以后的职业规划是什么？</li>
-<li>反问阶段</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>对象，原型及原型链</title>
-    <url>/posts/prototype.html</url>
-    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
-<ul>
-<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
-问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
-</ul>
-<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
-<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
-<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
-<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
-<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
-<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
-
-<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>对象</category>
-        <category>原型链</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-        <tag>原型继承</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>快手一二面面经</title>
     <url>/posts/kuaishou.html</url>
     <content><![CDATA[<h2 id="快手一面-效率工程"><a href="#快手一面-效率工程" class="headerlink" title="快手一面(效率工程)"></a>快手一面(效率工程)</h2><ol>
@@ -528,122 +415,116 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
-    <title>React基础总结</title>
-    <url>/posts/react.html</url>
-    <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
-<li>constructor组件创建的时候第一个执行的函数<br>Fragment占位符 不需要在外层在包裹一个额外的div标签<br>react原则上不允许在最外层出现多个同级的标签，而在外面在包裹一层会显得多余，Fragment可以解决</li>
-</ul>
-<p>尽可能的往this.setState里传递一个函数而不是一个对象<br>this.setState是异步的，不要指望它会立即映射为新的值、<br>在事件处理函数是异步的，这样可以确保性能<br>往setState传递一个函数会保证里面的state为最新的</p>
-<ul>
-<li><p>Jquery直接操作DOM叫命令式的代码</p>
-</li>
-<li><p>React叫做声明式的开发，面向数据开发，组件化的开发, 视图层的框架</p>
-<ul>
-<li>函数式编程(一个个函数来组成的) -》 有利于自动化的测试，只要测试每一个函数的输入输出是否正确。</li>
-<li>视图层的框架 -》 react在大型框架的时候只能搭建成视图，必须辅以redux，mobx等来管理状态数据</li>
-<li>单向的数据流 -》 父组件向子组件的时候，不要在子组件里改变父组件的值，可以调用父组件的函数来修改父组件的值(TodoItem.js)</li>
-</ul>
-</li>
-<li><p>setState接受一个参数prevState，表示之前的状态</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.setState((prevState) &#x3D;&gt; (&#123;</span><br><span class="line">    &#x2F;&#x2F; [...arr] 扩展运算符，生成新数组，加入后面的心智inputvalue</span><br><span class="line">    list: [...prevState.list, prevState.inputValue],</span><br><span class="line">    inputValue: &#39;&#39;  &#x2F;&#x2F;清空输入框里的值      </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 PropTypes 进行类型检查</p>
-</li>
-<li><p>当一个组件的state或者props发生改变的时候的，render函数就会被重新执行</p>
-</li>
-</ul>
-<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
-<li>Reat渲染流程(没有虚拟DOM的时候)</li>
-</ul>
+    <title>能不能说下前端缓存？</title>
+    <url>/posts/cache.html</url>
+    <content><![CDATA[<p>浏览器的缓存机制：强缓存和协商缓存</p>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>浏览器的缓存作用分为两种情况，一种是需要发送HTTP请求的，一种是不需要发送的。</p>
 <ol>
-<li>state数据</li>
-<li>JSX模板</li>
-<li>数据 + 模板 结合，生成真实的DOM</li>
-<li>state 发生改变</li>
-<li>数据 + 模板 结合，生成真实的DOM，替换原始的DOM</li>
-</ol>
-<p>如果每次改变页面结构的时候都去改变DOM的时候，会非常消耗性能，</p>
-<ul>
-<li>有了虚拟DOM的时候</li>
-</ul>
-<ol>
-<li>state数据</li>
-<li>JSX模板</li>
-<li>数据 + 模板，生成虚拟DOM(虚拟DOM就是原生的JS对象，用来描述真实DOM)</li>
-<li>用虚拟DOM的结构，生成真实的DOM</li>
-<li>state 发生变化</li>
-<li>生成新的虚拟DOM(极大的提升了性能)</li>
-<li>比较原始虚拟DOM和新的虚拟DOM的区别，找到区别(diff算法)<!-- 这里比较的是JS对象，而不是用两个DOM进行比较，JS的比较性能远远提升 --></li>
-<li>操作DOM，改变数据<br>React.createElement(‘div’, {}, ‘item’)<br>JSX -&gt; 虚拟DOM(JS 对象) -&gt; 真实的DOM</li>
-</ol>
-<p>优点：</p>
-<ol>
-<li>性能提升了。</li>
-<li>它使得跨端应用得以实现。 React Native</li>
-</ol>
-<ul>
-<li><p>diff算法<br>原则是数据发生改变，虚拟DOM发生改变<br>会调用setState方法，这也就是为什么setState会是一个异步的方法。<br>如果有三次setState，就会把这三次改变合并起来，做一次改变。</p>
-</li>
-<li><p>同级比较的(同层虚拟DOM比较)<br>只比较一次，如果在第一层比较出差异，接下来的层数就不需要比较了，直接进行替换。</p>
-</li>
-<li><p>key值比对(虚拟DOM)</p>
-</li>
-</ul>
-<p>每个DOM节点都带有一个key，用对应的key进行相互的DON比较，也是diff算法的一部分</p>
-<!-- 这也是为什么尽量不要用index下标来作为key值，index下标一发生改变的时候，key值就会发生相应的改变，这会导致diff算法造成极大的困难。 -->
-<ul>
-<li>Ajax请求和API接口<br>尽量都放在componentDidMount里使用<br>因为这个函数只会调用一次，且没有任何副作用，其实放在componentWillMount和construcrot里也是可以的，但并不会保证无副作用</li>
-<li>react-transition-group react开源动画库<br>更好的使用react动画效果<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2>指某一个时刻组件会自动执行的函数<br><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?Expires=1588069542&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=AUYcbEJZUuo6BGv0gI%2BbkxF9gA4%3D" alt="alt"><h3 id="老版本的生命周期函数"><a href="#老版本的生命周期函数" class="headerlink" title="老版本的生命周期函数"></a>老版本的生命周期函数</h3></li>
-</ul>
-<ol>
-<li>initialization<br>在constructor里初始化的数据</li>
-<li>Mounting(componentWillMount -&gt; render -&gt; componentDidMount)</li>
-</ol>
-<ul>
-<li>componentWillMount  在组件挂载之前被执行</li>
-<li>render      渲染函数，挂载组件</li>
-<li>componentDidMount   在组件挂载之后被执行<br>注： 这两种都只是在组件第一次渲染的时候执行，数据的更新不会影响他们的变化</li>
-</ul>
-<ol start="3">
-<li>Updation 数据更新<ul>
-<li>对于state数据的更新<ol>
-<li>shouldComponentUpdate 组件更新之前发生，相当于询问你组件是否需要更新嘛？需要返回true or false<br>注：如果shouldComponentUpdate返回true，则执行componentWillUpdate 否则，接下来的生命周期都不会被执行</li>
-<li>componentWillUpdate  组件将要更新</li>
-<li>render 更新组件，渲染</li>
-<li>componentDidUpdate 组件更新完成</li>
-</ol>
-</li>
-<li>对于props的更新(多了第一步的componentWillReceiveProps的生命周期， 相当于询问子组件是否接受了参数，这个生命周期函数只对于子组件有效，放在顶层组件没有效果)<ol>
-<li>componentWillReceiveProps  相当于询问子组件是否接受了参数<br>产生条件：<br>一个组件要从父组件接受参数<br>只要父组件的render函数被重新执行，子组件的这个生命周期函数函数就会被执行<br>接下来的步骤同于state数据的更新</li>
-</ol>
-</li>
+<li>不需要发送HTTP请求的<br>首先是检查强缓存，这个阶段是不需要发送HTTP请求的。<br>问题&amp;Q: 如何检查强缓存呢?<br>回答&amp;A: 通过检查相应的字段。<ul>
+<li>在HTTP/1.0中，检查的是Expires</li>
+<li>在HTTP/1.1中，检查的是Cache-control</li>
 </ul>
 </li>
-<li>Unmounting</li>
 </ol>
+<h4 id="Expires-过期时间"><a href="#Expires-过期时间" class="headerlink" title="Expires  过期时间"></a>Expires  过期时间</h4><p>存在于服务器中的返回头中，告诉浏览器在这个过期时间端内可以直接从缓存获取数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Expires: Wed, <span class="number">22</span> Nov <span class="number">2019</span> <span class="number">08</span>:<span class="number">41</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+
+<p>缺点：服务器的时间和浏览器的时间可能不一致，那返回的时间就是不准确的了。因此在HTTP/1.1被抛弃了</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>这个用来控制的不是具体的时间点，而是采用过期时长来控制缓存，对应的缓存应该是max-age</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Cache-Control:max-age=<span class="number">3600</span></span><br></pre></td></tr></table></figure>
+<p>public:  浏览器经过到达源服务器的中间任意缓存服务器都可以缓存<br>private： 这种情况就是只有浏览器能缓存了，中间的代理服务器不能缓存。<br>no-cache: 跳过当前的强缓存，发送HTTP请求，即直接进入协商缓存阶段。<br>no-store：非常粗暴，不进行任何形式的缓存。<br>s-maxage：这和max-age长得比较像，但是区别在于s-maxage是针对代理服务器的缓存时间。<br>must-revalidate: 是缓存就会有过期的时候，加上这个字段一旦缓存过期，就必须回到源服务器验证。</p>
+<p>❗ 注意：值得注意的是，当Expires和Cache-Control同时存在的时候，Cache-Control会优先考虑。</p>
+<p>当缓存时间都超时了，这时候就需要到协商缓存。</p>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>强缓存失效后，浏览器在请求头中携带 <strong>缓存tag</strong> 相应的缓存服务器发送请求，由服务器根据这个tag，来决定是否使用缓存，这就是协商缓存。</p>
+<p>协商缓存分为两种：Last-Modified 和 ETag</p>
+<h4 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h4><p>即资源的最终的修改时间。浏览器第一次给服务器发送请求后，服务器会在请求投中加上这个字段。</p>
+<p>了解这个还需要了解另外一个字段：<strong>If-Modified-Since</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">If-Modified-Since:  Thu, <span class="number">15</span> Apr <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+<p>表示是在2004.4.15更新后的时间</p>
+<p>此时如果 <strong>Last-Modified</strong> 字段为</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Last-Modified:  Sun, <span class="number">29</span> Aug <span class="number">2004</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
+<p>表示资源的最后的修改时间为：2004.8.29</p>
 <ul>
-<li>componentWillUnMount 在组件卸载及销毁之前直接调用</li>
+<li>总结：<br>如果<strong>If-Modified-Since</strong>的时间小于<strong>Last-Modified</strong>的时间，表示是时候更新了<br>否则直接返回304状态码， 告诉浏览器直接用缓存</li>
 </ul>
-<h3 id="新版本的生命周期函数"><a href="#新版本的生命周期函数" class="headerlink" title="新版本的生命周期函数"></a>新版本的生命周期函数</h3><p><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%96%B0.png?Expires=1588087201&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=%2FMC3xLT54Pzgs%2BWj7FuaKosLzyw%3D" alt="alt"></p>
+<h4 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h4><p>将资源(文件)以字符串的形式给文件生成唯一标识，当资源发生改变时，这个值就会改变。</p>
+<p>在此之前还需要了解另外一个字段: <strong>If-None-Match</strong></p>
+<p>浏览器在收到ETag的值时，会在下次请求时会将这个值作为If-None-Match这个字段的内容，然后会与服务器上的ETag值进行对比。</p>
 <ul>
-<li>componentWillMount 和 componentWillReceiveProps将会被替换成<br>getDerivedStateFromProps函数<br>会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用</li>
+<li>如果不一样时，说明资源更新了，需要返回新的资源，然后需要发送新的http请求获取最新资源</li>
+<li>一样时，返回状态码304，告诉浏览器直接用缓存</li>
 </ul>
-<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
-<li>react中绑定this指向时放在constructor里，保证绑定只会执行一次，不会做不必要的性能浪费</li>
-<li>setState函数有多个时，会被react进行异步的操作，放在一起进行操作，不会浪费性能。</li>
-<li>虚拟DOM的优化</li>
-<li>shouldComponentUpdate生命周期函数的使用，可以避免多余的render的浪费</li>
+<h3 id="Last-Modified-与-ETag-对比"><a href="#Last-Modified-与-ETag-对比" class="headerlink" title="Last-Modified 与 ETag 对比"></a>Last-Modified 与 ETag 对比</h3><ol>
+<li><p>在精度上。<br>ETag优于Last-Modified.因为ETag时按照内容给资源上标识，因此能准确感知资源的变化。Last-Modified在一些特殊的情况并不能准确感知资源变化。</p>
+<ul>
+<li>编辑了资源文件，但是文件内容并没有更改，这样也会造成缓存失效。</li>
+<li>Last-Modified 能够感知的单位时间是秒，如果文件在 1 秒内改变了多次，那么这时候的 Last-Modified 并没有体现出修改了。</li>
+</ul>
+</li>
+<li><p>在性能上。<br>Last-Modified优于ETag，也很好理解，Last-Modified仅仅只是记录一个时间点，而Etag需要根据文件的具体内容生成哈希值。</p>
+</li>
 </ol>
+<p>❗ 注意：如果两种方式都支持的话，服务器会优先考虑ETag。</p>
+<h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><p>当Last-Modified 或者 ETag返回304状态时，我们需要从缓存中拿去资源，可是缓存的资源放在哪呢？<br>浏览器中的缓存位置一共有四种，按优先级从高到低排列分别是：</p>
+<ul>
+<li>Service Worker</li>
+<li>Memory Cache</li>
+<li>Disk Cache</li>
+<li>Push Cache</li>
+</ul>
+<h4 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h4><p>Service Worker是PWA的重要实现机制。</p>
+<ul>
+<li>原理<br>让 JS 运行在主线程之外，由于它脱离了浏览器的窗体，因此无法直接访问DOM</li>
+<li>用法<br>官方的React框架的时候会生成一个serveice-worker.js。他在离线缓存、消息推送和网络代理等起到了很大的作用</li>
+</ul>
+<h4 id="Memory-Cache-和-Disk-Cache"><a href="#Memory-Cache-和-Disk-Cache" class="headerlink" title="Memory Cache 和 Disk Cache"></a>Memory Cache 和 Disk Cache</h4><p>即内存缓存和磁盘缓存<br>效率上Memory Cache比Disk Cache快。存储容量和存储时长Disk Cache更有优势。</p>
+<h4 id="Push-Cache"><a href="#Push-Cache" class="headerlink" title="Push Cache"></a>Push Cache</h4><p>即推送缓存，这是浏览器缓存的最后一道防线。它是 HTTP/2 中的内容，虽然现在应用的并不广泛，但随着 HTTP/2 的推广，它的应用越来越广泛。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>浏览器的缓存机制：首先会对Cache-cache或者Expires字段进行检查(这里Expires就不进行考虑了，因为他是Http1.0，已经被淘汰)，判断有无强缓存，如果强缓存可以用，就直接使用，否则就进入协商缓存阶段。<br>在协商缓存中，浏览器会发送http请求，服务器会通过请求头中的If-Modified-Since与Last-Modified字段或者If-None-Match与ETag字段进行比较，判断资源是否更新。</p>
+<ul>
+<li>若资源更新，则返回新的资源和状态码200</li>
+<li>否则，返回状态304，告诉浏览器直接从缓存中获取。</li>
+</ul>
 ]]></content>
       <categories>
         <category>技术</category>
-        <category>javascript</category>
-        <category>react</category>
+        <category>HTTP</category>
+        <category>前端性能</category>
       </categories>
       <tags>
-        <tag>react</tag>
-        <tag>redux</tag>
-        <tag>虚拟dom</tag>
+        <tag>HTTP</tag>
+        <tag>缓存</tag>
+        <tag>前端性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象，原型及原型链</title>
+    <url>/posts/prototype.html</url>
+    <content><![CDATA[<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成，我们称之为对象里面属性和方法)</p>
+<ul>
+<li>对象也被称之为”关联数组”<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="string">"Lin"</span>,</span><br><span class="line">    last: <span class="string">"JiaHao"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出一样</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name.first); <span class="comment">//Lin</span></span><br><span class="line"><span class="built_in">console</span>.log(person[<span class="string">'name'</span>][<span class="string">'first'</span>]); <span class="comment">//Lin</span></span><br></pre></td></tr></table></figure>
+问题&amp;Q: 为什么能用数组形式访问呢？<br>回答&amp;A: 对象做了字符串到值的映射，而数组做的是数字到值的映射。本质上是一样的</li>
+</ul>
+<h2 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h2><p>javascript常被描述为”基于原型的语言”，每个对象都有一个原型对象，对象以原型为模板，从原型继承方法和属性。<br>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链，<strong>它解释了为何一个对象会拥有定义在其他对象中的属性和方法。</strong></p>
+<p>❗ 注意：这些属性和方法定义在Object的构造器函数之上的prototype属性上，而非对象实例本身。</p>
+<p>在传统的OOP中类中定义的所有属性和方法都被复制到实例中，而在javascript中，<strong>是在构造器中和对象实例之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的）</strong>，之后通过上溯原型链，在构造器中找到这些属性和方法。</p>
+<h3 id="理解实例对象的原型和构造函数的prototype之间的关系"><a href="#理解实例对象的原型和构造函数的prototype之间的关系" class="headerlink" title="理解实例对象的原型和构造函数的prototype之间的关系"></a>理解实例对象的原型和构造函数的prototype之间的关系</h3><p>前者是每个实例上都有的属性，后者是构造函数的属性。</p>
+<p>实例对象的原型可以通过<strong><strong>proto</strong></strong>和<strong>Object.getPrototypeOf(new People())</strong>（People值构造函数）<br>也就是说实例对象的原型和构造函数的prototype指向同一个对象,即 Object.getPrototype(new People) 和 People.prototype指向同一个对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === People.prototype)    <span class="comment">//true</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">总结：实例对象继承的是构造函数上的prototype上的属性和方法,并不是真正的继承而是**在对象实例和构造器上建立一个链接**, 这个链接是__proto__属性，是从构造函数的prototype属性派生的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);  <span class="comment">//People &#123; sex: '男' &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">//男  这里并不是真正实例上的属性，而是实例通过上溯原型链，在构造器中找到这些属性</span></span><br></pre></td></tr></table></figure>
+<p>当你通过实例查找属性和方法时，他会先在这个实例查找有没有这个属性，没有的话就会通过<strong>proto</strong>这个属性上查找这个属性,也就是这里的People.prototype.sex上查找，如果 p1.<strong>proto</strong> (People.prototype.sex)有这个属性，就会使用这个属性，没有的话就会继续往上查找p1.<strong>proto</strong>的<strong>proto</strong>属性，看它是否有这个属性。直到找到顶部全局的prototype上是否有这个属性，有就会使用这个属性，否则就为undefined</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">People.prototype.sex = <span class="string">'男'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 顶部全局的属性</span></span><br><span class="line">global.Object.prototype.sex = <span class="string">'超人'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> People(<span class="string">'朵雾'</span>, <span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__);</span><br><span class="line"><span class="comment">//  这里在p1上没找到sex属性，就会找p1.__proto__上的sex属性，也就是People.prototype上的sex属性,发现还是未找到，就会继续往上查找，找到顶层global.Object.prototype(这里的全局属性是global，浏览器是window)，发现找到了sex属性。</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br><span class="line">p1.sex = <span class="string">'女'</span></span><br><span class="line"><span class="comment">//  这里直接在p1上找到属性，就不会继续查找</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);</span><br></pre></td></tr></table></figure>
+
+<p>❗ 注意：必须重申，原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过前面所说的“原型链”的方式。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>对象</category>
+        <category>原型链</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>原型继承</tag>
       </tags>
   </entry>
   <entry>
@@ -788,6 +669,125 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       </tags>
   </entry>
   <entry>
+    <title>React基础总结</title>
+    <url>/posts/react.html</url>
+    <content><![CDATA[<h2 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h2><ul>
+<li>constructor组件创建的时候第一个执行的函数<br>Fragment占位符 不需要在外层在包裹一个额外的div标签<br>react原则上不允许在最外层出现多个同级的标签，而在外面在包裹一层会显得多余，Fragment可以解决</li>
+</ul>
+<p>尽可能的往this.setState里传递一个函数而不是一个对象<br>this.setState是异步的，不要指望它会立即映射为新的值、<br>在事件处理函数是异步的，这样可以确保性能<br>往setState传递一个函数会保证里面的state为最新的</p>
+<ul>
+<li><p>Jquery直接操作DOM叫命令式的代码</p>
+</li>
+<li><p>React叫做声明式的开发，面向数据开发，组件化的开发, 视图层的框架</p>
+<ul>
+<li>函数式编程(一个个函数来组成的) -》 有利于自动化的测试，只要测试每一个函数的输入输出是否正确。</li>
+<li>视图层的框架 -》 react在大型框架的时候只能搭建成视图，必须辅以redux，mobx等来管理状态数据</li>
+<li>单向的数据流 -》 父组件向子组件的时候，不要在子组件里改变父组件的值，可以调用父组件的函数来修改父组件的值(TodoItem.js)</li>
+</ul>
+</li>
+<li><p>setState接受一个参数prevState，表示之前的状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.setState((prevState) &#x3D;&gt; (&#123;</span><br><span class="line">    &#x2F;&#x2F; [...arr] 扩展运算符，生成新数组，加入后面的心智inputvalue</span><br><span class="line">    list: [...prevState.list, prevState.inputValue],</span><br><span class="line">    inputValue: &#39;&#39;  &#x2F;&#x2F;清空输入框里的值      </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 PropTypes 进行类型检查</p>
+</li>
+<li><p>当一个组件的state或者props发生改变的时候的，render函数就会被重新执行</p>
+</li>
+</ul>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ul>
+<li>Reat渲染流程(没有虚拟DOM的时候)</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板 结合，生成真实的DOM</li>
+<li>state 发生改变</li>
+<li>数据 + 模板 结合，生成真实的DOM，替换原始的DOM</li>
+</ol>
+<p>如果每次改变页面结构的时候都去改变DOM的时候，会非常消耗性能，</p>
+<ul>
+<li>有了虚拟DOM的时候</li>
+</ul>
+<ol>
+<li>state数据</li>
+<li>JSX模板</li>
+<li>数据 + 模板，生成虚拟DOM(虚拟DOM就是原生的JS对象，用来描述真实DOM)</li>
+<li>用虚拟DOM的结构，生成真实的DOM</li>
+<li>state 发生变化</li>
+<li>生成新的虚拟DOM(极大的提升了性能)</li>
+<li>比较原始虚拟DOM和新的虚拟DOM的区别，找到区别(diff算法)<!-- 这里比较的是JS对象，而不是用两个DOM进行比较，JS的比较性能远远提升 --></li>
+<li>操作DOM，改变数据<br>React.createElement(‘div’, {}, ‘item’)<br>JSX -&gt; 虚拟DOM(JS 对象) -&gt; 真实的DOM</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>性能提升了。</li>
+<li>它使得跨端应用得以实现。 React Native</li>
+</ol>
+<ul>
+<li><p>diff算法<br>原则是数据发生改变，虚拟DOM发生改变<br>会调用setState方法，这也就是为什么setState会是一个异步的方法。<br>如果有三次setState，就会把这三次改变合并起来，做一次改变。</p>
+</li>
+<li><p>同级比较的(同层虚拟DOM比较)<br>只比较一次，如果在第一层比较出差异，接下来的层数就不需要比较了，直接进行替换。</p>
+</li>
+<li><p>key值比对(虚拟DOM)</p>
+</li>
+</ul>
+<p>每个DOM节点都带有一个key，用对应的key进行相互的DON比较，也是diff算法的一部分</p>
+<!-- 这也是为什么尽量不要用index下标来作为key值，index下标一发生改变的时候，key值就会发生相应的改变，这会导致diff算法造成极大的困难。 -->
+<ul>
+<li>Ajax请求和API接口<br>尽量都放在componentDidMount里使用<br>因为这个函数只会调用一次，且没有任何副作用，其实放在componentWillMount和construcrot里也是可以的，但并不会保证无副作用</li>
+<li>react-transition-group react开源动画库<br>更好的使用react动画效果<h2 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h2>指某一个时刻组件会自动执行的函数<br><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png?Expires=1588069542&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=AUYcbEJZUuo6BGv0gI%2BbkxF9gA4%3D" alt="alt"><h3 id="老版本的生命周期函数"><a href="#老版本的生命周期函数" class="headerlink" title="老版本的生命周期函数"></a>老版本的生命周期函数</h3></li>
+</ul>
+<ol>
+<li>initialization<br>在constructor里初始化的数据</li>
+<li>Mounting(componentWillMount -&gt; render -&gt; componentDidMount)</li>
+</ol>
+<ul>
+<li>componentWillMount  在组件挂载之前被执行</li>
+<li>render      渲染函数，挂载组件</li>
+<li>componentDidMount   在组件挂载之后被执行<br>注： 这两种都只是在组件第一次渲染的时候执行，数据的更新不会影响他们的变化</li>
+</ul>
+<ol start="3">
+<li>Updation 数据更新<ul>
+<li>对于state数据的更新<ol>
+<li>shouldComponentUpdate 组件更新之前发生，相当于询问你组件是否需要更新嘛？需要返回true or false<br>注：如果shouldComponentUpdate返回true，则执行componentWillUpdate 否则，接下来的生命周期都不会被执行</li>
+<li>componentWillUpdate  组件将要更新</li>
+<li>render 更新组件，渲染</li>
+<li>componentDidUpdate 组件更新完成</li>
+</ol>
+</li>
+<li>对于props的更新(多了第一步的componentWillReceiveProps的生命周期， 相当于询问子组件是否接受了参数，这个生命周期函数只对于子组件有效，放在顶层组件没有效果)<ol>
+<li>componentWillReceiveProps  相当于询问子组件是否接受了参数<br>产生条件：<br>一个组件要从父组件接受参数<br>只要父组件的render函数被重新执行，子组件的这个生命周期函数函数就会被执行<br>接下来的步骤同于state数据的更新</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Unmounting</li>
+</ol>
+<ul>
+<li>componentWillUnMount 在组件卸载及销毁之前直接调用</li>
+</ul>
+<h3 id="新版本的生命周期函数"><a href="#新版本的生命周期函数" class="headerlink" title="新版本的生命周期函数"></a>新版本的生命周期函数</h3><p><img src="https://githup.oss-cn-beijing.aliyuncs.com/issue/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E6%96%B0.png?Expires=1588087201&OSSAccessKeyId=TMP.3Kf5vTjB2e17tGpaMxJW8qpPZasLZCYyVYCs9UkwsotyrM6ygC56etDBLRddp3U3Hpb3myGjsp6SzLp6sNoww5GPE97MQs&Signature=%2FMC3xLT54Pzgs%2BWj7FuaKosLzyw%3D" alt="alt"></p>
+<ul>
+<li>componentWillMount 和 componentWillReceiveProps将会被替换成<br>getDerivedStateFromProps函数<br>会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ol>
+<li>react中绑定this指向时放在constructor里，保证绑定只会执行一次，不会做不必要的性能浪费</li>
+<li>setState函数有多个时，会被react进行异步的操作，放在一起进行操作，不会浪费性能。</li>
+<li>虚拟DOM的优化</li>
+<li>shouldComponentUpdate生命周期函数的使用，可以避免多余的render的浪费</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>javascript</category>
+        <category>react</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>redux</tag>
+        <tag>虚拟dom</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>this指向和call，apply， bind，new</title>
     <url>/posts/this.html</url>
     <content><![CDATA[<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>this永远指向最后调用它的对象，而不是创建的时候定义的</p>
@@ -825,6 +825,35 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       <tags>
         <tag>javascript</tag>
         <tag>this指向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字节跳动一面凉经</title>
+    <url>/posts/zijie.html</url>
+    <content><![CDATA[<h2 id="字节跳动一面凉经"><a href="#字节跳动一面凉经" class="headerlink" title="字节跳动一面凉经"></a>字节跳动一面凉经</h2><p>面试官人超级好，一直在引导我，可能是因为第一次面试吧，还是不可避免的紧张了，错过了机会，但是要吸取教训，继续加油吧。</p>
+<ol>
+<li>做自我介绍<br>尽量介绍往自己会的部分靠</li>
+<li>说说看了什么书？<br>我说了小黄书，语言精粹，图解HTTP，后面就追问了小黄书上的，因为紧张我居然连构造函数和类都没答上来…</li>
+<li>commonJS和AMD/CMD语言规范<br>这块答得也不好，哭唧唧，太菜了</li>
+<li>为什么会有Vue，React这种框架，没有了他们就不能编程了吗？<br>其实面试就是和面试官聊天式的，你不会他会向你解释，然后继续下一个话题，都是带有引导式的，面试是最能检验自己能力的</li>
+<li>vue和react的脚手架是怎么搭建的，为什么我们可以直接就能写.vue或者.jsx文件就能直接在网页显示？<br>我就扯了下webpack打包编译的过程..感觉还是不太好</li>
+<li>js里面有类吗？js里的类是通过什么继承的？<br>我说了extends。。然后他说extends是es6的语法，那在之前那些老前辈是怎么实现继承的…然后不会了。。。</li>
+<li>this指向的问题<br>还是没答好…前面崩了，这里就慌了</li>
+<li>== 和 ===的问题</li>
+<li>js怎么判断是不是字符串<br>我傻了吧唧的说了isString…受到前几天看的判断是否为数组isArray，我就以为有这个方法..</li>
+<li>js事件循环</li>
+<li>宏任务和微任务<br>最后两个都还行。。</li>
+<li>一个编程题<br>[1, 3, 2][3, 4, 5, 6, 7, 8, 9]<br>转化成<br>[1, 2, 3, 3, 4, 5, 6, 7, 8, 9]</li>
+</ol>
+<p>面试官叫我讲下思路，我说了插入排序，因为有一半是已经排好序的，然后问我能不能优化一下，插入排序是两个for的<br>我就说加一个判断条件..满足条件了就不需要接下来的比较了</p>
+<p>ps: 面试心态还是要放好，真的真的心态很重要，不用因为一道题不会就接着接下来的题都崩了，面试官都是不错的,<br>加油整理心态继续学习。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -883,35 +912,6 @@ Map对一个键值多次赋值后，前一个会被后一个覆盖<figure class=
       <tags>
         <tag>javascript</tag>
         <tag>虚拟dom</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字节跳动一面凉经</title>
-    <url>/posts/zijie.html</url>
-    <content><![CDATA[<h2 id="字节跳动一面凉经"><a href="#字节跳动一面凉经" class="headerlink" title="字节跳动一面凉经"></a>字节跳动一面凉经</h2><p>面试官人超级好，一直在引导我，可能是因为第一次面试吧，还是不可避免的紧张了，错过了机会，但是要吸取教训，继续加油吧。</p>
-<ol>
-<li>做自我介绍<br>尽量介绍往自己会的部分靠</li>
-<li>说说看了什么书？<br>我说了小黄书，语言精粹，图解HTTP，后面就追问了小黄书上的，因为紧张我居然连构造函数和类都没答上来…</li>
-<li>commonJS和AMD/CMD语言规范<br>这块答得也不好，哭唧唧，太菜了</li>
-<li>为什么会有Vue，React这种框架，没有了他们就不能编程了吗？<br>其实面试就是和面试官聊天式的，你不会他会向你解释，然后继续下一个话题，都是带有引导式的，面试是最能检验自己能力的</li>
-<li>vue和react的脚手架是怎么搭建的，为什么我们可以直接就能写.vue或者.jsx文件就能直接在网页显示？<br>我就扯了下webpack打包编译的过程..感觉还是不太好</li>
-<li>js里面有类吗？js里的类是通过什么继承的？<br>我说了extends。。然后他说extends是es6的语法，那在之前那些老前辈是怎么实现继承的…然后不会了。。。</li>
-<li>this指向的问题<br>还是没答好…前面崩了，这里就慌了</li>
-<li>== 和 ===的问题</li>
-<li>js怎么判断是不是字符串<br>我傻了吧唧的说了isString…受到前几天看的判断是否为数组isArray，我就以为有这个方法..</li>
-<li>js事件循环</li>
-<li>宏任务和微任务<br>最后两个都还行。。</li>
-<li>一个编程题<br>[1, 3, 2][3, 4, 5, 6, 7, 8, 9]<br>转化成<br>[1, 2, 3, 3, 4, 5, 6, 7, 8, 9]</li>
-</ol>
-<p>面试官叫我讲下思路，我说了插入排序，因为有一半是已经排好序的，然后问我能不能优化一下，插入排序是两个for的<br>我就说加一个判断条件..满足条件了就不需要接下来的比较了</p>
-<p>ps: 面试心态还是要放好，真的真的心态很重要，不用因为一道题不会就接着接下来的题都崩了，面试官都是不错的,<br>加油整理心态继续学习。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
       </tags>
   </entry>
 </search>
